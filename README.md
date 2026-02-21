@@ -44,12 +44,22 @@ npm run build
 
 ## 📱 Instagram Carousel Slides
 
+### Exported Assets
 Located in `instantclaw/carousel/`:
 
 | Slide | File | Description |
 |-------|------|-------------|
 | 1 | `slide-01-cover.png` | Cover: "Your 24/7 AI Assistant in <1 Minute" |
 | 2 | `slide-02-comparison.png` | Before/After: "5 Days vs 1 Minute" |
+
+### Source Code
+Located in `src/`:
+
+| Slide | Source File | Description |
+|-------|-------------|-------------|
+| 1 | `slide-01.js` | Cover component with logo, headline, platform icons |
+| 2 | `slide-02.js` | Comparison component (Without vs With) |
+| - | `index.js` | Main entry point - switch between slides here |
 
 ## 🎨 Design System
 
