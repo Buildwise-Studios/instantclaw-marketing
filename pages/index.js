@@ -1,4 +1,4 @@
 import React from 'react';
-import Post2Slide02List from './post2-slide-02-list';
+import Post2Slide04CTA from './post2-slide-04';
 
-export default Post2Slide02List;
+export default Post2Slide04CTA;
