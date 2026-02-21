@@ -9,5 +9,5 @@ import Slide05CTA from './slide-05';
 // export default Slide01Cover;      // Slide 1: Cover
 // export default Slide02Comparison; // Slide 2: Comparison
 // export default Slide03DeployForm; // Slide 3: Deploy Form
-// export default Slide04UseCases;   // Slide 4: Use Cases
-export default Slide05CTA;        // Slide 5: CTA
+export default Slide04UseCases;   // Slide 4: Use Cases (List version)
+// export default Slide05CTA;        // Slide 5: CTA
