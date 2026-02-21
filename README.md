@@ -5,13 +5,17 @@ This repository contains the source code and exported assets for InstantClaw's m
 ## 📁 Structure
 
 ```
-├── instantclaw/carousel/     # Exported PNG slides for Instagram carousel
+├── instantclaw/carousel/     # Post 1: "Who We Are" carousel slides
+├── post2/carousel/           # Post 2: "Mac Mini vs InstantClaw" carousel slides
 ├── pages/                     # Source code (React + Next.js)
 │   ├── index.js              # Main entry - switch active slide here
 │   ├── slide-01.js           # Slide 1: Cover
 │   ├── slide-02.js           # Slide 2: Comparison
 │   ├── slide-03.js           # Slide 3: Deploy Form
-│   ├── slide-04.js           # Slide 4: Use Cases Grid
+│   ├── slide-04.js           # Slide 4: Use Cases (List)
+│   ├── slide-04-grid.js      # Slide 4: Use Cases (Grid alternative)
+│   ├── slide-05.js           # Slide 5: CTA
+│   ├── post2-slide-01.js     # Post 2 Slide 1: Mac Mini vs InstantClaw
 │   └── _app.js               # Next.js app wrapper
 ├── styles/                    # Global CSS styles
 │   └── globals.css
@@ -94,6 +98,16 @@ export default Slide01Cover;      // Slide 1: Cover
 - **Font:** Inter (sans-serif)
 - **Headlines:** text-7xl to text-9xl (72px-144px)
 - **Subtext:** text-3xl to text-6xl
+
+## 📱 Post 2: Mac Mini vs InstantClaw
+
+Located in `post2/carousel/`:
+
+| Slide | File | Description |
+|-------|------|-------------|
+| 1 | `post2-slide-01.png` | Cover: Mac Mini $699 vs InstantClaw $59.90/mo |
+
+Source: `pages/post2-slide-01.js`
 
 ## 📝 Notes
 
