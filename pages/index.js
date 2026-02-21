@@ -1,4 +1,4 @@
 import React from 'react';
-import Post2Slide03Progress from './post2-slide-03-progress';
+import Post2Slide02List from './post2-slide-02-list';
 
-export default Post2Slide03Progress;
+export default Post2Slide02List;
