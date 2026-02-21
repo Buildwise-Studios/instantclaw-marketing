@@ -7,7 +7,7 @@ const { chromium } = require('playwright');
   await page.setViewportSize({ width: 1080, height: 1920 });
   await page.goto('http://localhost:3456', { waitUntil: 'networkidle' });
   await page.waitForTimeout(2000);
-  await page.screenshot({ path: '/root/.openclaw/workspace-webber-web/instantclaw-marketing/slide-04.png' });
+  await page.screenshot({ path: '/root/.openclaw/workspace-webber-web/instantclaw-marketing/slide-05.png' });
   await browser.close();
   console.log('Screenshot saved to slide-04.png (HD 9:16 format)');
 })();
