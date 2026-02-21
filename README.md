@@ -6,11 +6,14 @@ This repository contains the source code and exported assets for InstantClaw's m
 
 ```
 ├── instantclaw/carousel/     # Exported PNG slides for Instagram carousel
-├── src/                       # Source code (React + Next.js)
-│   ├── pages/                 # Page components
-│   │   └── index.js          # Main creative component
-│   ├── styles/               # Global CSS styles
+├── pages/                     # Source code (React + Next.js)
+│   ├── index.js              # Main entry - switch active slide here
+│   ├── slide-01.js           # Slide 1: Cover
+│   ├── slide-02.js           # Slide 2: Comparison
+│   ├── slide-03.js           # Slide 3: Deploy Form
 │   └── _app.js               # Next.js app wrapper
+├── styles/                    # Global CSS styles
+│   └── globals.css
 ├── public/                    # Static assets (logos, images)
 ├── package.json              # Dependencies
 ├── next.config.js            # Next.js configuration
@@ -51,15 +54,28 @@ Located in `instantclaw/carousel/`:
 |-------|------|-------------|
 | 1 | `slide-01-cover.png` | Cover: "Your 24/7 AI Assistant in <1 Minute" |
 | 2 | `slide-02-comparison.png` | Before/After: "5 Days vs 1 Minute" |
+| 3 | `slide-03.png` | Deploy Form: "Connect in Seconds" |
 
 ### Source Code
-Located in `src/`:
+Located in `pages/`:
 
 | Slide | Source File | Description |
 |-------|-------------|-------------|
 | 1 | `slide-01.js` | Cover component with logo, headline, platform icons |
 | 2 | `slide-02.js` | Comparison component (Without vs With) |
+| 3 | `slide-03.js` | Deploy form interface mockup |
 | - | `index.js` | Main entry point - switch between slides here |
+
+### Switching Between Slides
+
+To preview a different slide, edit `pages/index.js`:
+
+```javascript
+// Uncomment the slide you want to see:
+export default Slide01Cover;      // Slide 1: Cover
+// export default Slide02Comparison; // Slide 2: Comparison  
+// export default Slide03DeployForm; // Slide 3: Deploy Form
+```
 
 ## 🎨 Design System
 
