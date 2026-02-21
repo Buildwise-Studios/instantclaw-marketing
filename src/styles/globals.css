@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide Next.js dev indicator */
+[data-nextjs-dialog-overlay],
+[data-nextjs-toast],
+.nextjs-toast,
+.nextjs-dialog-overlay,
+#__next-build-watcher,
+.nextjs-portal {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Additional selector for Next.js 15+ indicator */
+[aria-live="polite"][class*="nextjs"] {
+  display: none !important;
+}
