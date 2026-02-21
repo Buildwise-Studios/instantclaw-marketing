@@ -1,13 +1,4 @@
 import React from 'react';
-import Slide01Cover from './slide-01';
-import Slide02Comparison from './slide-02';
-import Slide03DeployForm from './slide-03';
-import Slide04UseCases from './slide-04';
-import Slide05CTA from './slide-05';
+import Post2Slide01Cover from './post2-slide-01';
 
-// To switch between slides, uncomment the one you want to preview:
-// export default Slide01Cover;      // Slide 1: Cover
-// export default Slide02Comparison; // Slide 2: Comparison
-// export default Slide03DeployForm; // Slide 3: Deploy Form
-export default Slide04UseCases;   // Slide 4: Use Cases (List version)
-// export default Slide05CTA;        // Slide 5: CTA
+export default Post2Slide01Cover;
