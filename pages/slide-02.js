@@ -1,9 +1,12 @@
 import React from 'react';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 // Slide 2: Before/After Comparison - "5 Days vs 1 Minute"
 const Slide02Comparison = () => {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] p-8 font-sans antialiased">
+    <div className={`${inter.className} min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] p-8 font-sans antialiased`}>
       {/* Title */}
       <div className="text-center mb-12 px-4">
         <h1 className="font-sans text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.15] bg-gradient-to-r from-[#1D1C1D] via-[#c53131] via-[#D4A574] to-[#1D1C1D] bg-clip-text text-transparent bg-[length:200%_auto]">
