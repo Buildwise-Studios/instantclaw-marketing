@@ -4,11 +4,11 @@ const Post2Slide01Cover = () => {
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] p-8 font-sans antialiased">
       {/* Title */}
-      <div className="text-center mb-10">
-        <h1 className="font-sans text-5xl md:text-6xl font-bold tracking-tight text-[#1D1C1D] mb-4">
+      <div className="text-center mb-6">
+        <h1 className="font-sans text-5xl md:text-6xl font-bold tracking-tight text-[#1D1C1D] mb-3">
           Self-Hosting vs InstantClaw
         </h1>
-        <p className="text-2xl text-[#616061]">The real cost breakdown</p>
+        <p className="text-xl text-[#616061]">Why spend days when you can deploy in seconds?</p>
       </div>
 
       {/* Comparison Cards */}
@@ -26,23 +26,25 @@ const Post2Slide01Cover = () => {
           
           <div className="space-y-4">
             <div className="text-center py-4 bg-red-50 rounded-xl">
-              <span className="text-5xl font-bold text-red-500">$699</span>
-              <p className="text-sm text-gray-600 mt-1">upfront cost</p>
+              <span className="text-3xl font-bold text-red-500">$699 Mac Mini</span>
+              <p className="text-3xl font-bold text-red-500 mt-2">+ 5 Days Setup</p>
             </div>
-            <div className="flex items-center gap-2 text-gray-600">
-              <span className="text-red-400">+</span>
-              <span>Electricity</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-600">
-              <span className="text-red-400">+</span>
-              <span>Maintenance</span>
-            </div>
-            <div className="pt-4 border-t border-gray-200">
-              <div className="flex items-center gap-2 text-gray-600">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span className="font-semibold">5 days setup</span>
+            <div className="space-y-2 text-gray-600">
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">•</span>
+                <span>Buy hardware</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">•</span>
+                <span>Install software</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">•</span>
+                <span>Configure server</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-red-400">•</span>
+                <span>Manual updates</span>
               </div>
             </div>
           </div>
@@ -69,31 +71,40 @@ const Post2Slide01Cover = () => {
           
           <div className="space-y-4">
             <div className="text-center py-4 bg-green-50 rounded-xl">
-              <span className="text-5xl font-bold text-green-600">$59.90</span>
-              <p className="text-sm text-gray-600 mt-1">/month</p>
+              <span className="text-5xl font-bold text-green-600">&lt;1 Min</span>
+              <p className="text-sm text-gray-600 mt-1">deployment</p>
             </div>
-            <div className="flex items-center gap-2 text-gray-600">
-              <span className="text-green-500">✓</span>
-              <span>No hardware cost</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-600">
-              <span className="text-green-500">✓</span>
-              <span>All inclusive</span>
-            </div>
-            <div className="pt-4 border-t border-gray-200">
-              <div className="flex items-center gap-2 text-gray-600">
-                <svg className="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <span className="font-semibold">1 minute setup</span>
+            <div className="space-y-2 text-gray-600">
+              <div className="flex items-center gap-2">
+                <span className="text-green-500">✓</span>
+                <span>One-click deploy</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-500">✓</span>
+                <span>Pre-configured</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-500">✓</span>
+                <span>Cloud hosted</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-green-500">✓</span>
+                <span>Auto updates</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Key Message */}
+      <div className="mt-8 text-center">
+        <p className="text-2xl font-bold text-[#1D1C1D]">
+          Focus on mastering OpenClaw, not configuring servers
+        </p>
+      </div>
+
       {/* Swipe indicator */}
-      <div className="mt-10 flex items-center gap-2 text-[#616061]">
+      <div className="mt-6 flex items-center gap-2 text-[#616061]">
         <span className="text-sm">Swipe for the breakdown</span>
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
