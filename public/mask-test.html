@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #111; display: flex; justify-content: center; }
+    svg { width: 800px; height: 800px; border: 1px solid #333; }
+    .skeleton { stroke: rgba(0, 255, 0, 0.5); stroke-dasharray: 4000; animation: draw 2s linear infinite; }
+    @keyframes draw {
+      0% { stroke-dashoffset: 4000; }
+      100% { stroke-dashoffset: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="svg-container"></div>
+  <script>
+    fetch('instantclaw-logo.svg')
+      .then(res => res.text())
+      .then(svg => {
+        document.getElementById('svg-container').innerHTML = svg;
+        const svgEl = document.querySelector('svg');
+        
+        // Add skeleton paths over the top
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        
+        // Oval Skeleton
+        const oval = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        oval.setAttribute("d", "M 750, 230 A 550,420 0 1,1 749.9, 230");
+        oval.setAttribute("fill", "none");
+        oval.setAttribute("stroke-width", "300");
+        oval.setAttribute("class", "skeleton");
+        
+        // Claw Left Skeleton
+        const clawLeft = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        clawLeft.setAttribute("d", "M 250, 300 Q 50, 650 500, 1050");
+        clawLeft.setAttribute("fill", "none");
+        clawLeft.setAttribute("stroke-width", "300");
+        clawLeft.setAttribute("stroke-linecap", "round");
+        clawLeft.setAttribute("class", "skeleton");
+        
+        // Claw Mid Skeleton
+        const clawMid = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        clawMid.setAttribute("d", "M 780, 280 Q 850, 650 780, 1200");
+        clawMid.setAttribute("fill", "none");
+        clawMid.setAttribute("stroke-width", "300");
+        clawMid.setAttribute("stroke-linecap", "round");
+        clawMid.setAttribute("class", "skeleton");
+
+        // Claw Right Skeleton
+        const clawRight = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        clawRight.setAttribute("d", "M 1250, 300 Q 1450, 650 1000, 1150");
+        clawRight.setAttribute("fill", "none");
+        clawRight.setAttribute("stroke-width", "300");
+        clawRight.setAttribute("stroke-linecap", "round");
+        clawRight.setAttribute("class", "skeleton");
+
+        g.appendChild(oval);
+        g.appendChild(clawLeft);
+        g.appendChild(clawMid);
+        g.appendChild(clawRight);
+        svgEl.appendChild(g);
+      });
+  </script>
+</body>
+</html>
