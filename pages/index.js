@@ -1,4 +1,4 @@
 import React from 'react';
-import Post5Slide02SSH from './post5-slide-02';
+import Post5Slide03Firewall from './post5-slide-03';
 
-export default Post5Slide02SSH;
+export default Post5Slide03Firewall;
