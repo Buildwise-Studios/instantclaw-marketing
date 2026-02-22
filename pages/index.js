@@ -1,4 +1,4 @@
 import React from 'react';
-import Post6Story from './post6-story';
+import Post8Slide01Cover from './post8-slide-01';
 
-export default Post6Story;
+export default Post8Slide01Cover;
