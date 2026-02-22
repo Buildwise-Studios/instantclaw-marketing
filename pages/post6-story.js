@@ -39,11 +39,11 @@ const Post6Story = () => {
           </p>
 
           {/* The Alternative */}
-          <div className="inline-flex items-center gap-3">
-            <img src="/instantclaw-logo.png" alt="InstantClaw" className="w-10 h-10" />
-            <div>
-              <p className="text-base text-gray-300 mb-1">The alternative?</p>
-              <p className="font-sans text-3xl md:text-4xl font-bold text-white">
+          <div className="flex flex-col items-center">
+            <p className="text-base text-gray-300 mb-2">The alternative?</p>
+            <div className="flex items-center gap-4">
+              <img src="/instantclaw-logo.png" alt="InstantClaw" className="w-14 h-14" />
+              <p className="font-sans text-4xl md:text-5xl font-bold text-white">
                 InstantClaw
               </p>
             </div>
