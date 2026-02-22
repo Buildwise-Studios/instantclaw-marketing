@@ -6,19 +6,22 @@ const inter = Inter({ subsets: ['latin'], display: 'swap' });
 const Post5Slide05Solution = () => {
   return (
     <div className={`${inter.className} min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] p-8 font-sans antialiased`}>
+      {/* Logo + Brand Name */}
+      <div className="flex items-center gap-4 mb-6">
+        <img src="/instantclaw-logo.png" alt="InstantClaw" className="w-16 h-16" />
+        <h1 className="font-sans text-4xl md:text-5xl font-bold tracking-tight text-[#1D1C1D]">
+          InstantClaw
+        </h1>
+      </div>
+
       {/* Main Headline */}
       <div className="text-center mb-6">
-        <h1 className="font-sans text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-[#1D1C1D] via-[#c53131] via-[#D4A574] to-[#1D1C1D] bg-clip-text text-transparent bg-[length:200%_auto] mb-4">
+        <h2 className="font-sans text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-[#1D1C1D] via-[#c53131] via-[#D4A574] to-[#1D1C1D] bg-clip-text text-transparent bg-[length:200%_auto] mb-4">
           There's a Better Way
-        </h1>
+        </h2>
         <p className="text-2xl text-[#616061] text-center max-w-[600px]">
           VPS power without the complexity
         </p>
-      </div>
-
-      {/* Logo */}
-      <div className="mb-8">
-        <img src="/instantclaw-logo.png" alt="InstantClaw" className="w-24 h-24" />
       </div>
 
       {/* Value Props */}
