@@ -114,3 +114,4 @@ Source: `pages/post2-slide-01.js`
 - All exported slides are **1080×1920px** (HD 9:16 format)
 - PNG exports are full quality (no compression)
 - Source code uses React + Next.js + Tailwind CSS
+# Cache refresh
