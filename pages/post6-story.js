@@ -39,11 +39,14 @@ const Post6Story = () => {
           </p>
 
           {/* The Alternative */}
-          <div className="inline-block">
-            <p className="text-base text-gray-300 mb-2">The alternative?</p>
-            <p className="font-sans text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-[#c53131] via-[#D4A574] to-white bg-clip-text text-transparent">
-              InstantClaw
-            </p>
+          <div className="inline-flex items-center gap-3">
+            <img src="/instantclaw-logo.png" alt="InstantClaw" className="w-10 h-10" />
+            <div>
+              <p className="text-base text-gray-300 mb-1">The alternative?</p>
+              <p className="font-sans text-3xl md:text-4xl font-bold text-white">
+                InstantClaw
+              </p>
+            </div>
           </div>
         </div>
       </div>
