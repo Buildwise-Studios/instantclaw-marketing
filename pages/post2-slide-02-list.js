@@ -40,7 +40,7 @@ const Post2Slide02List = () => {
     <div className={`${inter.className} min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] p-8 font-sans antialiased`}>
       {/* Title */}
       <div className="text-center mb-10">
-        <h1 className="font-sans text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#1D1C1D] mb-2">
+        <h1 className="font-sans text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-[#1D1C1D] via-[#c53131] via-[#D4A574] to-[#1D1C1D] bg-clip-text text-transparent bg-[length:200%_auto] mb-2">
           Mac Mini Costs
         </h1>
         <p className="text-xl text-[#616061]">What you're really paying</p>

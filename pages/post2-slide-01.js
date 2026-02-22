@@ -8,7 +8,7 @@ const Post2Slide01Cover = () => {
     <div className={`${inter.className} min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] p-8 font-sans antialiased`}>
       {/* Title */}
       <div className="text-center mb-6">
-        <h1 className="font-sans text-5xl md:text-6xl font-bold tracking-tight text-[#1D1C1D] mb-3">
+        <h1 className="font-sans text-5xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-[#1D1C1D] via-[#c53131] via-[#D4A574] to-[#1D1C1D] bg-clip-text text-transparent bg-[length:200%_auto] mb-3">
           Self-Hosting vs InstantClaw
         </h1>
         <p className="text-xl text-[#616061]">Why spend days when you can deploy in seconds?</p>

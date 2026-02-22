@@ -8,7 +8,7 @@ const Post2Slide04CTA = () => {
     <div className={`${inter.className} min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] p-8 font-sans antialiased`}>
       {/* Main Headline */}
       <div className="text-center max-w-[800px] mb-8">
-        <h1 className="font-sans text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1] text-[#1D1C1D] mb-6">
+        <h1 className="font-sans text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1] bg-gradient-to-r from-[#1D1C1D] via-[#c53131] via-[#D4A574] to-[#1D1C1D] bg-clip-text text-transparent bg-[length:200%_auto] mb-6">
           Stop Configuring Servers.
         </h1>
         <h2 className="font-sans text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-[#1D1C1D] via-[#c53131] via-[#D4A574] to-[#1D1C1D] bg-clip-text text-transparent bg-[length:200%_auto]">
