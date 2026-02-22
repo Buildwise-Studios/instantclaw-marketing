@@ -1,4 +1,4 @@
 import React from 'react';
-import Post8Slide01Cover from './post8-slide-01';
+import Post8Slide02Chat from './post8-slide-02';
 
-export default Post8Slide01Cover;
+export default Post8Slide02Chat;
