@@ -8,7 +8,7 @@ const Post3Slide06CTA = () => {
     <div className={`${inter.className} min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] p-8 font-sans antialiased`}>
       {/* Logo + Brand Name Row */}
       <div className="flex items-center gap-4 mb-4">
-        <img src="/instantclaw-logo.svg" alt="InstantClaw" className="w-20 h-20" />
+        <img src="/instantclaw-logo.png" alt="InstantClaw" className="w-20 h-20" />
         <h1 className="font-sans text-6xl md:text-7xl font-bold tracking-tight text-[#1D1C1D]">
           InstantClaw
         </h1>
