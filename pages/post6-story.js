@@ -17,31 +17,34 @@ const Post6Story = () => {
       <div className="absolute inset-0 bg-black/60"></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[800px] text-center">
-        {/* Big Number */}
-        <h1 className="font-sans text-[120px] md:text-[180px] font-bold text-white leading-none mb-4">
-          5
-        </h1>
-        <h2 className="font-sans text-4xl md:text-5xl font-bold text-white mb-8">
-          days.
-        </h2>
+      <div className="relative z-10 max-w-[850px]">
+        {/* Text Box with Background */}
+        <div className="bg-black/70 backdrop-blur-sm rounded-2xl p-8 md:p-12 text-center">
+          {/* Big Number */}
+          <h1 className="font-sans text-[100px] md:text-[150px] font-bold text-white leading-none mb-2">
+            5
+          </h1>
+          <h2 className="font-sans text-3xl md:text-4xl font-bold text-white mb-6">
+            days.
+          </h2>
 
-        {/* Story Text */}
-        <p className="text-xl md:text-2xl text-gray-200 leading-relaxed mb-6">
-          That's how long our friend James spent setting up OpenClaw on his VPS, and that is with him following a step-by-step ChatGPT guide and texting us daily.
-        </p>
-
-        {/* The Point */}
-        <p className="text-xl md:text-2xl text-white font-semibold leading-relaxed mb-8">
-          VPS is the right way, <span className="text-[#c53131]">spending 5 days is not.</span>
-        </p>
-
-        {/* The Alternative */}
-        <div className="inline-block">
-          <p className="text-lg text-gray-300 mb-2">The alternative?</p>
-          <p className="font-sans text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#D4A574] via-[#c53131] to-[#D4A574] bg-clip-text text-transparent">
-            InstantClaw
+          {/* Story Text */}
+          <p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-5">
+            That's how long our friend James spent setting up OpenClaw on his VPS, and that is with him following a step-by-step ChatGPT guide and texting us daily.
           </p>
+
+          {/* The Point */}
+          <p className="text-lg md:text-xl text-white font-semibold leading-relaxed mb-6">
+            VPS is the right way, <span className="text-[#c53131]">spending 5 days is not.</span>
+          </p>
+
+          {/* The Alternative */}
+          <div className="inline-block">
+            <p className="text-base text-gray-300 mb-2">The alternative?</p>
+            <p className="font-sans text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-[#c53131] via-[#D4A574] to-white bg-clip-text text-transparent">
+              InstantClaw
+            </p>
+          </div>
         </div>
       </div>
     </div>
