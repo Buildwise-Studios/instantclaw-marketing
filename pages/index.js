@@ -1,4 +1,4 @@
 import React from 'react';
-import Post3Slide04DevOps from './post3-slide-04';
+import Post3Slide02ShieldV2 from './post3-slide-02-shield-v2';
 
-export default Post3Slide04DevOps;
+export default Post3Slide02ShieldV2;

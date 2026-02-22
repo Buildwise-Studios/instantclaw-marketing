@@ -8,7 +8,7 @@ const Post3Slide02ShieldV2 = () => {
     <div className={`${inter.className} min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] p-8 font-sans antialiased`}>
       {/* Title */}
       <div className="text-center mb-6">
-        <h1 className="font-sans text-5xl md:text-6xl font-bold tracking-tight text-[#1D1C1D] mb-2">
+        <h1 className="font-sans text-5xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-[#1D1C1D] via-[#c53131] via-[#D4A574] to-[#1D1C1D] bg-clip-text text-transparent bg-[length:200%_auto] mb-2">
           Your Machine is Exposed
         </h1>
         <p className="text-xl text-[#616061]">No protection = No peace of mind</p>
