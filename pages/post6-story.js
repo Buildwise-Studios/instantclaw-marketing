@@ -43,7 +43,7 @@ const Post6Story = () => {
             <p className="text-base text-gray-300 mb-2">The alternative?</p>
             <div className="flex items-center gap-4">
               <img src="/instantclaw-logo.png" alt="InstantClaw" className="w-14 h-14" />
-              <p className="font-sans text-4xl md:text-5xl font-bold text-white">
+              <p className="font-sans text-3xl md:text-4xl font-bold text-white">
                 InstantClaw
               </p>
             </div>
