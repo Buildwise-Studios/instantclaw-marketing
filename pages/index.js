@@ -1,4 +1,4 @@
 import React from 'react';
-import Post7Slide03Command from './post7-slide-03';
+import Post7Slide04After from './post7-slide-04';
 
-export default Post7Slide03Command;
+export default Post7Slide04After;
