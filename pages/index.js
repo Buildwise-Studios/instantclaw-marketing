@@ -1,4 +1,4 @@
 import React from 'react';
-import Post8Slide02Chat from './post8-slide-02';
+import Post1Slide05CTA from './slide-05';
 
-export default Post8Slide02Chat;
+export default Post1Slide05CTA;
