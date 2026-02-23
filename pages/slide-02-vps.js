@@ -6,10 +6,10 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], display: 'swap' });
 // Slide 2: VPS vs InstantClaw - Asymmetrical Layout
 const Slide02VPS = () => {
   return (
-    <div className={`${spaceGrotesk.className} min-h-screen w-full flex flex-col bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] p-6 font-sans antialiased`}>
+    <div className={`${spaceGrotesk.className} min-h-screen w-full flex flex-col bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] px-6 font-sans antialiased`}>
       
-      {/* TOP SECTION: Headline - centered vertically in top area */}
-      <div className="h-[200px] flex flex-col justify-center">
+      {/* TOP: Headline centered vertically in the space above the cards */}
+      <div className="flex-1 flex flex-col justify-center">
         <h1 className="font-sans text-5xl font-black tracking-tight text-[#1D1C1D] leading-[1.1]">
           Self-Hosting<br/>
           <span className="bg-gradient-to-r from-[#1D1C1D] via-[#c53131] via-[#D4A574] to-[#1D1C1D] bg-clip-text text-transparent bg-[length:200%_auto]">OpenClaw</span> vs InstantClaw
@@ -17,8 +17,8 @@ const Slide02VPS = () => {
         <p className="text-xl text-[#616061] mt-2">Why spend days when you can deploy in seconds?</p>
       </div>
 
-      {/* MIDDLE SECTION: Asymmetrical Content - VPS Left, VS Center, InstantClaw Right */}
-      <div className="flex-1 flex items-center gap-6">
+      {/* CENTER: Cards at natural height — centered on page by equal flex-1 above and below */}
+      <div className="flex items-center gap-6">
         {/* VPS - Left Side (Faded, smaller) */}
         <div className="w-[45%] bg-white/50 backdrop-blur-sm rounded-2xl p-5 border border-red-200/50 opacity-70">
           <div className="flex items-center gap-3 mb-4">
@@ -104,8 +104,8 @@ const Slide02VPS = () => {
         </div>
       </div>
 
-      {/* BOTTOM SECTION: Tagline */}
-      <div className="h-[60px] flex items-end justify-center pb-2">
+      {/* BOTTOM: Tagline at the bottom of the remaining space */}
+      <div className="flex-1 flex items-end justify-center pb-6">
         <p className="text-2xl text-[#616061] font-bold">
           Focus on building, not configuring servers
         </p>
