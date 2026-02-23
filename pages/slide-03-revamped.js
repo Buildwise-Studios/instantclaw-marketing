@@ -6,24 +6,22 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], display: 'swap' });
 // Slide 3: Deploy Form - Following Slide 1 patterns
 const Slide03Revamped = () => {
   return (
-    <div className={`${spaceGrotesk.className} min-h-screen w-full flex flex-col bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] p-6 font-sans antialiased relative`}>
+    <div className={`${spaceGrotesk.className} min-h-screen w-full flex flex-col bg-gradient-to-br from-[#F8F7F5] to-[#D4A574] px-6 py-6 font-sans antialiased relative`}>
       
-      {/* TOP SECTION: Title and Subheadline - centered in top area */}
-      <div className="h-[160px] flex flex-col justify-center">
-        <h1 className="font-sans text-5xl font-black tracking-tight text-[#1D1C1D]">
-          Deploy in
+      {/* TOP: Headline centered vertically in the space above the form */}
+      <div className="flex-1 flex flex-col justify-center">
+        <h1 className="font-sans text-6xl font-black tracking-tight text-[#1D1C1D] leading-[1.1]">
+          Deploy in{' '}
+          <span className="bg-gradient-to-r from-[#1D1C1D] via-[#c53131] via-[#D4A574] to-[#1D1C1D] bg-clip-text text-transparent bg-[length:200%_auto]">Seconds</span>
         </h1>
-        <h2 className="font-sans text-6xl font-black tracking-tight bg-gradient-to-r from-[#1D1C1D] via-[#c53131] via-[#D4A574] to-[#1D1C1D] bg-clip-text text-transparent bg-[length:200%_auto]">
-          Seconds
-        </h2>
-        <p className="text-xl text-[#616061] mt-2">
+        <p className="text-2xl text-[#616061] mt-2">
           Choose your platform, paste your token, done.
         </p>
       </div>
 
-      {/* MIDDLE: Form - vertically centered */}
-      <div className="flex-1 flex items-center justify-center">
-        <div className="bg-white rounded-3xl shadow-xl p-6 w-[85%] border-2 border-[#D4A574]/30" style={{ boxShadow: '0 20px 50px -10px rgba(197, 49, 49, 0.12)' }}>
+      {/* CENTER: Form at natural height — centered on page by equal flex-1 above and below */}
+      <div className="flex items-center justify-center">
+        <div className="bg-white rounded-3xl shadow-xl p-6 w-full max-w-[480px] border-2 border-[#D4A574]/30" style={{ boxShadow: '0 20px 50px -10px rgba(197, 49, 49, 0.12)' }}>
           
           {/* Platform Selection */}
           <div className="mb-5">
@@ -96,6 +94,9 @@ const Slide03Revamped = () => {
           </div>
         </div>
       </div>
+
+      {/* BOTTOM: Empty flex-1 to center the form vertically (footer overlays via absolute) */}
+      <div className="flex-1" />
 
       {/* Bottom Left: Platform Logos - Same as Slide 1 */}
       <div className="absolute bottom-16 left-6">

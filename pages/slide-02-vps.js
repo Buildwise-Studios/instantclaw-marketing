@@ -10,11 +10,11 @@ const Slide02VPS = () => {
       
       {/* TOP: Headline centered vertically in the space above the cards */}
       <div className="flex-1 flex flex-col justify-center">
-        <h1 className="font-sans text-5xl font-black tracking-tight text-[#1D1C1D] leading-[1.1]">
+        <h1 className="font-sans text-6xl font-black tracking-tight text-[#1D1C1D] leading-[1.1]">
           Self-Hosting<br/>
           <span className="bg-gradient-to-r from-[#1D1C1D] via-[#c53131] via-[#D4A574] to-[#1D1C1D] bg-clip-text text-transparent bg-[length:200%_auto]">OpenClaw</span> vs InstantClaw
         </h1>
-        <p className="text-xl text-[#616061] mt-2">Why spend days when you can deploy in seconds?</p>
+        <p className="text-2xl text-[#616061] mt-2">Why spend days when you can deploy in seconds?</p>
       </div>
 
       {/* CENTER: Cards at natural height — centered on page by equal flex-1 above and below */}
