@@ -36,47 +36,47 @@ const TeaserPost3 = () => {
           </span>
         </div>
 
-        {/* Subtitle */}
-        <div className="text-center -mt-8">
-          <p className="font-sans text-4xl font-black text-[#1D1C1D] uppercase tracking-wide">
+        {/* Subtitle - 2x BIGGER */}
+        <div className="text-center mt-2">
+          <p className="font-sans text-7xl font-black text-[#1D1C1D] uppercase tracking-wide">
             DAY TO GO
           </p>
-          <p className="font-sans text-3xl font-bold text-[#616061] mt-2">
+          <p className="font-sans text-6xl font-bold text-[#616061] mt-4">
             AI agents for everyone
           </p>
         </div>
 
-        {/* Value props */}
-        <div className="mt-12 text-center space-y-2">
-          <p className="text-xl text-[#1D1C1D] font-medium">
-            Deploy in <span className="font-bold text-[#c53131]">&lt;60 seconds</span>
+        {/* Value props - 2x BIGGER */}
+        <div className="mt-16 text-center space-y-4">
+          <p className="text-4xl text-[#1D1C1D] font-bold">
+            Deploy in <span className="font-black text-[#c53131]">&lt;60 seconds</span>
           </p>
-          <p className="text-lg text-[#616061]">
+          <p className="text-3xl text-[#616061] font-medium">
             No Mac Minis • No VPS • No hardware costs
           </p>
         </div>
       </div>
 
-      {/* Bottom: Set your reminder CTA - Safe zone (200px from bottom) */}
+      {/* Bottom: Set your reminder CTA - Safe zone (200px from bottom) - 2x BIGGER */}
       <div 
         className="absolute left-1/2 transform -translate-x-1/2 text-center w-full px-8"
         style={{ bottom: '200px' }}
       >
-        <p className="text-2xl font-black text-[#1D1C1D] mb-2">
+        <p className="text-5xl font-black text-[#1D1C1D] mb-3">
           Set your reminder!
         </p>
-        <p className="text-lg text-[#616061] font-medium">
+        <p className="text-3xl text-[#616061] font-bold">
           The future starts tomorrow
         </p>
       </div>
 
-      {/* Very bottom: Powered by OpenClaw */}
+      {/* Very bottom: Powered by OpenClaw - 2x BIGGER */}
       <div 
         className="absolute left-1/2 transform -translate-x-1/2 text-center"
         style={{ bottom: '60px' }}
       >
-        <p className="text-sm text-[#616061] font-bold">Powered by</p>
-        <p className="text-2xl font-black text-[#1D1C1D]">OpenClaw</p>
+        <p className="text-2xl text-[#616061] font-bold mb-1">Powered by</p>
+        <p className="text-5xl font-black text-[#1D1C1D]">OpenClaw</p>
       </div>
     </div>
   );
