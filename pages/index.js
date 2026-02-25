@@ -1,4 +1,4 @@
 import React from 'react';
-import TeaserPost1 from './teaser-post-1';
+import TeaserPost3Alt from '../teasing-posts/post-3-alternative';
 
-export default TeaserPost1;
+export default TeaserPost3Alt;
