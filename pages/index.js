@@ -1,4 +1,4 @@
 import React from 'react';
-import Slide01 from './slide-01';
+import TeaserPost1 from './teaser-post-1';
 
-export default Slide01;
+export default TeaserPost1;
