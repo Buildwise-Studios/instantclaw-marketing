@@ -10,6 +10,7 @@ module.exports = {
         'warm-bg': '#F8F7F5',
         'warm-gold': '#D4A574',
         'dark-text': '#1A1A1A',
+        'brand-red': '#c53131',
       },
     },
   },
