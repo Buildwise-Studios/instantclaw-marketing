@@ -10,33 +10,22 @@ import {
 } from 'remotion';
 import { MacWindow } from '../components/MacWindow';
 
-const DEPLOY_VIDEO = staticFile('assets/deploy-form.mov');
+const SCENE_VIDEO = staticFile('assets/Deployment.mp4');
 
-export const Scene02bDeployButton = () => {
+export const Scene04dVideoInMac = () => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
 
-  // Deploy progress: 0 → 0.85 over ~70% of scene (stops at 85% deployed)
-  const deployEndFrame = durationInFrames * 0.7;
-  const deployProgress = interpolate(
-    frame,
-    [0, deployEndFrame],
-    [0, 0.85],
-    {
-      easing: Easing.out(Easing.cubic),
-      extrapolateLeft: 'clamp',
-      extrapolateRight: 'clamp',
-    }
-  );
-
-  // Page-flip: rotateY from 85° (edge-on) to 0° (flat), hinge on right edge
-  const tiltDeg = interpolate(deployProgress, [0, 0.85], [85, 0], {
+  // Progressive tilt (same as Scene02b): 0° → 14° over first ~2s
+  const tiltEndFrame = 60;
+  const tiltDeg = interpolate(frame, [0, tiltEndFrame], [0, 14], {
+    easing: Easing.out(Easing.cubic),
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
 
   // Progressive zoom: zoom in over most of scene, zoom out faster at end
-  const zoomInEndFrame = durationInFrames * 0.75;
+  const zoomInEndFrame = durationInFrames * 0.75; // ~75% zooming in
   const zoomOutStartFrame = zoomInEndFrame;
   const zoomOutEndFrame = durationInFrames;
   const zoomIn = interpolate(
@@ -72,12 +61,7 @@ export const Scene02bDeployButton = () => {
           justifyContent: 'center',
         }}
       >
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
-          <MacWindow
-            tiltDeg={tiltDeg}
-            transformOrigin="right center"
-            style={{ width: '100%', maxWidth: 640 }}
-          >
+        <MacWindow tiltDeg={tiltDeg} style={{ width: '100%' }}>
           <div
             style={{
               position: 'relative',
@@ -87,8 +71,9 @@ export const Scene02bDeployButton = () => {
               background: '#fff',
             }}
           >
+            {/* Replace SCENE_VIDEO with your video path when ready */}
             <Video
-              src={DEPLOY_VIDEO}
+              src={SCENE_VIDEO}
               style={{
                 width: '100%',
                 height: '100%',
@@ -97,7 +82,6 @@ export const Scene02bDeployButton = () => {
             />
           </div>
         </MacWindow>
-        </div>
       </div>
     </AbsoluteFill>
   );

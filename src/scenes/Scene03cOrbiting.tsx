@@ -48,6 +48,7 @@ const LOGO_SIZE = 180;
 
 const STAGGER_FRAMES = 2; // frames between each icon's entrance
 const ICON_FADE_FRAMES = 10; // how long each icon takes to fade in
+const EXIT_FADE_FRAMES = 15; // fade out at scene end
 
 function AppIconRing({
   icons,
@@ -112,9 +113,9 @@ function AppIconRing({
               alignItems: 'center',
               justifyContent: 'center',
               borderRadius: '50%',
-              backgroundColor: 'white',
+              backgroundColor: '#FAFAF8',
               border: 'none',
-              boxShadow: 'none',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
               overflow: 'hidden',
               opacity,
               transform: `scale(${scale})`,
@@ -132,9 +133,31 @@ function AppIconRing({
   );
 }
 
+const EXIT_FRAMES = 15; // fade-out duration at scene end
+
 export const Scene03cOrbiting = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, durationInFrames } = useVideoConfig();
+
+  // #6 Exit animation: fade out in last EXIT_FRAMES
+  const exitStartFrame = durationInFrames - EXIT_FRAMES;
+  const exitOpacity = interpolate(
+    frame,
+    [exitStartFrame, durationInFrames],
+    [1, 0],
+    { easing: Easing.in(Easing.cubic), extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
+  );
+
+  // #3 Subtle logo pulse: gentle scale 1 → 1.02 → 1 (~1.5s cycle)
+  const logoPulseScale = 1 + 0.02 * Math.sin((frame / 45) * Math.PI * 2);
+
+  const logoEntranceOpacity = interpolate(
+    frame,
+    [0, 15],
+    [0, 1],
+    { easing: Easing.out(Easing.cubic), extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
+  );
+  const logoOpacity = logoEntranceOpacity * exitOpacity;
 
   return (
     <AbsoluteFill
@@ -145,8 +168,8 @@ export const Scene03cOrbiting = () => {
       }}
     >
       <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', overflow: 'hidden' }}>
-        {/* Shared container so both rings are centered together */}
-        <div style={{ position: 'relative', width: (OUTER_RADIUS + OUTER_ICON_SIZE) * 2, height: (OUTER_RADIUS + OUTER_ICON_SIZE) * 2, flexShrink: 0 }}>
+        {/* Shared container so both rings are centered together - exit fade applied */}
+        <div style={{ position: 'relative', width: (OUTER_RADIUS + OUTER_ICON_SIZE) * 2, height: (OUTER_RADIUS + OUTER_ICON_SIZE) * 2, flexShrink: 0, opacity: exitOpacity }}>
           {/* Outer ring - rotates clockwise */}
           <div style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <AppIconRing
@@ -188,12 +211,8 @@ export const Scene03cOrbiting = () => {
             style={{
               width: LOGO_SIZE,
               height: LOGO_SIZE,
-              opacity: interpolate(
-                frame,
-                [0, 15],
-                [0, 1],
-                { easing: Easing.out(Easing.cubic), extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
-              ),
+              opacity: logoOpacity,
+              transform: `scale(${logoPulseScale})`,
             }}
           />
         </div>

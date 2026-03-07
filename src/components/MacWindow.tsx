@@ -3,6 +3,7 @@ import React from 'react';
 type MacWindowProps = {
   children: React.ReactNode;
   tiltDeg?: number;
+  transformOrigin?: string;
   className?: string;
   style?: React.CSSProperties;
 };
@@ -10,6 +11,7 @@ type MacWindowProps = {
 export const MacWindow: React.FC<MacWindowProps> = ({
   children,
   tiltDeg = 0,
+  transformOrigin = 'center center',
   className = '',
   style = {},
 }) => {
@@ -18,6 +20,7 @@ export const MacWindow: React.FC<MacWindowProps> = ({
       <div
         style={{
           transform: tiltDeg ? `rotateY(${tiltDeg}deg)` : undefined,
+          transformOrigin,
           transformStyle: 'preserve-3d',
         }}
         className={`relative rounded-[24px] bg-white border border-slate-200 shadow-lg overflow-hidden ${className}`}

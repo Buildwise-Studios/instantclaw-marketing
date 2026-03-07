@@ -9,6 +9,10 @@ import { Scene02bDeployButton } from './scenes/Scene02bDeployButton';
 import { Scene03aText } from './scenes/Scene03aText';
 import { Scene03bBento } from './scenes/Scene03bBento';
 import { Scene03cOrbiting } from './scenes/Scene03cOrbiting';
+import { Scene04aProblemText } from './scenes/Scene04aProblemText';
+import { Scene04bTerminalToDeploy } from './scenes/Scene04bTerminalToDeploy';
+import { Scene04cSolutionText } from './scenes/Scene04cSolutionText';
+import { Scene04dVideoInMac } from './scenes/Scene04dVideoInMac';
 import { Scene04ProblemSolution } from './scenes/Scene04ProblemSolution';
 import { Scene05Timer } from './scenes/Scene05Timer';
 import { Scene06CTA } from './scenes/Scene06CTA';
@@ -29,7 +33,12 @@ const SCENE02b_FRAMES = Math.ceil(3.5 * FPS);
 const SCENE03a_FRAMES = Math.ceil(1.5 * FPS);
 const SCENE03b_FRAMES = Math.ceil(4 * FPS);
 const SCENE03c_FRAMES = Math.ceil(4 * FPS);
-const SCENE04_FRAMES = 7 * FPS;
+// Scene 4 split: 4a problem (3s), 4b terminal→deploy (4s), 4c solution (2.5s), 4d video (4s)
+const SCENE04_FRAMES = 7 * FPS; // legacy combined
+const SCENE04a_FRAMES = Math.ceil(3 * FPS);
+const SCENE04b_FRAMES = Math.ceil(4 * FPS);
+const SCENE04c_FRAMES = Math.ceil(2.5 * FPS);
+const SCENE04d_FRAMES = Math.ceil(4 * FPS);
 const SCENE05_FRAMES = 5 * FPS;
 const SCENE06_FRAMES = 3 * FPS;
 
@@ -103,6 +112,42 @@ export const RemotionRoot = () => {
         id="Scene03cOrbiting"
         component={Scene03cOrbiting}
         durationInFrames={SCENE03c_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{}}
+      />
+      <Composition
+        id="Scene04aProblemText"
+        component={Scene04aProblemText}
+        durationInFrames={SCENE04a_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{}}
+      />
+      <Composition
+        id="Scene04bTerminalToDeploy"
+        component={Scene04bTerminalToDeploy}
+        durationInFrames={SCENE04b_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{}}
+      />
+      <Composition
+        id="Scene04cSolutionText"
+        component={Scene04cSolutionText}
+        durationInFrames={SCENE04c_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{}}
+      />
+      <Composition
+        id="Scene04dVideoInMac"
+        component={Scene04dVideoInMac}
+        durationInFrames={SCENE04d_FRAMES}
         fps={FPS}
         width={1080}
         height={1920}

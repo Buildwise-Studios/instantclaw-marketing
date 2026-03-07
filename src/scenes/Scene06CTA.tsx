@@ -23,6 +23,8 @@ export const Scene06CTA = () => {
           flexDirection: 'column',
           alignItems: 'center',
           gap: 40,
+          transform: 'scale(1.35)',
+          transformOrigin: 'center center',
         }}
       >
         <Img
