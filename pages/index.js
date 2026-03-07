@@ -1,4 +1,4 @@
 import React from 'react';
-import TeaserPost3Alt from '../teasing-posts/post-3-alternative';
+import AIFacePost from './ai-face-post';
 
-export default TeaserPost3Alt;
+export default AIFacePost;

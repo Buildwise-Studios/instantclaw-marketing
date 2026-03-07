@@ -24,7 +24,7 @@ const AIFacePost = () => {
       {/* Bottom: Logo only */}
       <div 
         className="absolute left-1/2 transform -translate-x-1/2"
-        style={{ bottom: '60px' }}
+        style={{ bottom: '20px' }}
       >
         <img 
           src="/instantclaw-logo.png" 
