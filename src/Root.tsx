@@ -16,6 +16,7 @@ import { Scene04dVideoInMac } from './scenes/Scene04dVideoInMac';
 import { Scene04ProblemSolution } from './scenes/Scene04ProblemSolution';
 import { Scene05Timer } from './scenes/Scene05Timer';
 import { Scene06CTA } from './scenes/Scene06CTA';
+import { SceneTextValidation } from './scenes/SceneTextValidation';
 
 const FPS = 30;
 // One full loop: phase0 (3s) + phase1 (3s) + phase2 (3s) + payoff (2.5s) = 11.5s
@@ -42,9 +43,21 @@ const SCENE04d_FRAMES = Math.ceil(4 * FPS);
 const SCENE05_FRAMES = 5 * FPS;
 const SCENE06_FRAMES = 3 * FPS;
 
+// TextValidation: ~15 seconds to compare all 10 fonts
+const TEXT_VALIDATION_FRAMES = 15 * FPS;
+
 export const RemotionRoot = () => {
   return (
     <>
+      <Composition
+        id="SceneTextValidation"
+        component={SceneTextValidation}
+        durationInFrames={TEXT_VALIDATION_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{}}
+      />
       <Composition
         id="DeploySteps3DTilt"
         component={DeploySteps3DTilt}

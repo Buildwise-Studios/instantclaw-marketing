@@ -3,11 +3,11 @@ import {
   AbsoluteFill,
   useCurrentFrame,
   useVideoConfig,
-  Video,
   staticFile,
   interpolate,
   Easing,
 } from 'remotion';
+import { Video } from '@remotion/media';
 import { MacWindow } from '../components/MacWindow';
 
 const DEPLOY_VIDEO = staticFile('assets/deploy-form.mov');

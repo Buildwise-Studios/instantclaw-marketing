@@ -3,11 +3,11 @@ import {
   AbsoluteFill,
   useCurrentFrame,
   useVideoConfig,
-  Video,
   staticFile,
   interpolate,
   Easing,
 } from 'remotion';
+import { Video } from '@remotion/media';
 import { MacWindow } from '../components/MacWindow';
 
 const SCENE_VIDEO = staticFile('assets/Deployment.mp4');
@@ -71,7 +71,6 @@ export const Scene04dVideoInMac = () => {
               background: '#fff',
             }}
           >
-            {/* Replace SCENE_VIDEO with your video path when ready */}
             <Video
               src={SCENE_VIDEO}
               style={{

@@ -1,5 +1,5 @@
 {
-  "name": "slack-screenshot",
+  "name": "instantclaw-marketing",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,12 +7,15 @@
     "build": "next build",
     "start": "next start -p 3456",
     "remotion:studio": "remotion studio src/index.ts",
-    "remotion:render": "remotion render DeploySteps3DTilt out/deploy-steps-3d.mp4"
+    "remotion:render": "remotion render DeploySteps3DTilt out/deploy-steps-3d.mp4",
+    "remotion:render:reel": "remotion render InstantClawLaunchReel out/instantclaw-launch-reel.mp4"
   },
   "dependencies": {
     "@remotion/bundler": "^4.0.431",
     "@remotion/cli": "^4.0.431",
     "@remotion/google-fonts": "4.0.431",
+    "@remotion/media": "4.0.431",
+    "@remotion/transitions": "4.0.431",
     "autoprefixer": "^10.4.24",
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.3",

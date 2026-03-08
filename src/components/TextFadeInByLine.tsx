@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCurrentFrame, interpolate, Easing } from 'remotion';
+import { useCurrentFrame, interpolate } from 'remotion';
 import { loadFont } from '@remotion/google-fonts/SpaceGrotesk';
 
 const { fontFamily } = loadFont('normal', { weights: ['400', '700'], subsets: ['latin'] });
@@ -12,35 +12,29 @@ type TextFadeInByLineProps = {
   startFrame?: number;
   staggerFrames?: number;
   fadeDurationFrames?: number;
-  className?: string;
   fontSize?: number;
-  /** Split by newlines for multiple lines, or use a single line */
 };
 
 /**
- * Fade in by line - each line fades in with subtle slide up, staggered.
- * Gradient applied per line so it flows smoothly across the full phrase.
- * Remotion-native (frame-driven), no Framer Motion.
+ * Fade in text line by line with brand gradient.
  */
 export const TextFadeInByLine: React.FC<TextFadeInByLineProps> = ({
   text,
   startFrame = 0,
-  staggerFrames = 12,
-  fadeDurationFrames = 15,
-  className = '',
-  fontSize = 72,
+  staggerFrames = 8,
+  fadeDurationFrames = 20,
+  fontSize = 88,
 }) => {
   const frame = useCurrentFrame();
-  const lines = text.split('\n').filter(Boolean);
+  const lines = text.split('\n');
 
   return (
     <div
-      className={className}
       style={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: '0.3em',
+        gap: '0.2em',
         fontFamily,
         fontWeight: 700,
         fontSize,
@@ -56,29 +50,20 @@ export const TextFadeInByLine: React.FC<TextFadeInByLineProps> = ({
           lineFrame,
           [0, fadeDurationFrames],
           [0, 1],
-          {
-            easing: Easing.out(Easing.cubic),
-            extrapolateLeft: 'clamp',
-            extrapolateRight: 'clamp',
-          }
+          { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
         );
 
         const translateY = interpolate(
           lineFrame,
           [0, fadeDurationFrames],
-          [16, 0],
-          {
-            easing: Easing.out(Easing.cubic),
-            extrapolateLeft: 'clamp',
-            extrapolateRight: 'clamp',
-          }
+          [12, 0],
+          { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
         );
 
         return (
           <span
             key={i}
             style={{
-              display: 'block',
               opacity,
               transform: `translateY(${translateY}px)`,
               background: BRAND_GRADIENT,
@@ -88,7 +73,7 @@ export const TextFadeInByLine: React.FC<TextFadeInByLineProps> = ({
               backgroundClip: 'text',
             }}
           >
-            {line}
+            {line || '\u00A0'}
           </span>
         );
       })}

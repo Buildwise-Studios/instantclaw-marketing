@@ -121,7 +121,7 @@ function AppIconRing({
               transform: `scale(${scale})`,
             }}
           >
-            <img
+            <Img
               src={staticFile(`icons/${iconFile}`)}
               alt=""
               style={{ width: iconSize * 0.6, height: iconSize * 0.6 }}
