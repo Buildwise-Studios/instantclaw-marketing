@@ -17,6 +17,7 @@ import { Scene04ProblemSolution } from './scenes/Scene04ProblemSolution';
 import { Scene05Timer } from './scenes/Scene05Timer';
 import { Scene06CTA } from './scenes/Scene06CTA';
 import { SceneTextValidation } from './scenes/SceneTextValidation';
+import { InstantClawLaunchReel, INSTANTCLAW_LAUNCH_REEL_FRAMES } from './InstantClawLaunchReel';
 
 const FPS = 30;
 // One full loop: phase0 (3s) + phase1 (3s) + phase2 (3s) + payoff (2.5s) = 11.5s
@@ -53,6 +54,15 @@ export const RemotionRoot = () => {
         id="SceneTextValidation"
         component={SceneTextValidation}
         durationInFrames={TEXT_VALIDATION_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{}}
+      />
+      <Composition
+        id="InstantClawLaunchReel"
+        component={InstantClawLaunchReel}
+        durationInFrames={INSTANTCLAW_LAUNCH_REEL_FRAMES}
         fps={FPS}
         width={1080}
         height={1920}

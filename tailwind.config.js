@@ -7,6 +7,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        border: 'var(--border)',
+        ring: 'var(--ring)',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        primary: 'var(--primary)',
+        muted: 'var(--muted)',
         'warm-bg': '#F8F7F5',
         'warm-gold': '#D4A574',
         'dark-text': '#1A1A1A',
