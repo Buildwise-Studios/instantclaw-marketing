@@ -18,6 +18,20 @@ module.exports = {
         'dark-text': '#1A1A1A',
         'brand-red': '#c53131',
       },
+      keyframes: {
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - var(--gap, 1rem)))' },
+        },
+        'marquee-vertical': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(calc(-100% - var(--gap, 1rem)))' },
+        },
+      },
+      animation: {
+        marquee: 'marquee var(--duration, 40s) infinite linear',
+        'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
+      },
     },
   },
   plugins: [],
