@@ -19,7 +19,11 @@ type CardType =
   | 'feature-list'
   | 'feature-typography'
   | 'feature-progress'
-  | 'conceptual-icon';
+  | 'conceptual-icon'
+  | 'marquee-files'
+  | 'animated-list'
+  | 'animated-beam'
+  | 'calendar';
 
 type BentoItem = {
   cardType: CardType;
@@ -56,15 +60,15 @@ const BENTO_ITEMS_RAW: Omit<BentoItem, 'startFrame'>[] = [
   { cardType: 'feature-typography', label: 'Custom branding', colStart: 4, rowStart: 2, colSpan: 2, rowSpan: 1 },
   { cardType: 'icon-label', label: 'Video calls', colStart: 6, rowStart: 2, colSpan: 1, rowSpan: 1, icon: 'zoom.svg', color: '#2d8cff' },
   { cardType: 'icon-label', label: 'Task boards', colStart: 1, rowStart: 3, colSpan: 2, rowSpan: 1, icon: 'trello.svg', color: '#0079bf' },
-  { cardType: 'feature-buttons', label: 'Starter templates', colStart: 3, rowStart: 3, colSpan: 2, rowSpan: 1 },
+  { cardType: 'animated-list', label: 'Notifications', colStart: 3, rowStart: 3, colSpan: 2, rowSpan: 1 },
   { cardType: 'icon-label', label: 'File sync', colStart: 5, rowStart: 3, colSpan: 1, rowSpan: 1, icon: 'googledrive.svg', color: '#4285f4' },
   { cardType: 'conceptual-icon', label: 'Secure auth', colStart: 6, rowStart: 3, colSpan: 1, rowSpan: 1, conceptualIcon: 'shield' },
   { cardType: 'feature-list', label: 'Team members', colStart: 1, rowStart: 4, colSpan: 2, rowSpan: 2 },
-  { cardType: 'icon-label', label: 'Docs & notes', colStart: 3, rowStart: 4, colSpan: 1, rowSpan: 1, icon: 'notion.svg', color: '#1a1a1a' },
-  { cardType: 'conceptual-icon', label: 'Deploy history', colStart: 4, rowStart: 4, colSpan: 1, rowSpan: 1, conceptualIcon: 'document' },
+  { cardType: 'marquee-files', label: 'Save your files', colStart: 3, rowStart: 4, colSpan: 1, rowSpan: 1 },
+  { cardType: 'animated-beam', label: 'Integrations', colStart: 4, rowStart: 4, colSpan: 1, rowSpan: 1 },
   { cardType: 'icon-label', label: 'Payments', colStart: 5, rowStart: 4, colSpan: 1, rowSpan: 1, icon: 'stripe.svg', color: '#635bff' },
   { cardType: 'conceptual-icon', label: 'Compliance', colStart: 6, rowStart: 4, colSpan: 1, rowSpan: 1, conceptualIcon: 'compliance' },
-  { cardType: 'icon-label', label: 'Tickets', colStart: 3, rowStart: 5, colSpan: 1, rowSpan: 1, icon: 'zendesk.svg', color: '#03363d' },
+  { cardType: 'calendar', label: 'Calendar', colStart: 3, rowStart: 5, colSpan: 1, rowSpan: 1 },
   { cardType: 'feature-progress', label: 'Deploy progress', colStart: 4, rowStart: 5, colSpan: 2, rowSpan: 1 },
   { cardType: 'icon-label', label: 'Code & repos', colStart: 6, rowStart: 5, colSpan: 1, rowSpan: 1, icon: 'github.svg', color: '#24292f' },
   { cardType: 'icon-label', label: 'Messaging', colStart: 1, rowStart: 6, colSpan: 1, rowSpan: 1, icon: 'telegram.svg', color: '#0088cc' },
@@ -110,6 +114,15 @@ const LABEL_STYLE: React.CSSProperties = {
   color: '#1a1a1a',
   lineHeight: 1.3,
 };
+
+// BentoDemo-style file cards (from BentoGrid.tsx)
+const MARQUEE_FILES = [
+  { name: 'bitcoin.pdf', body: 'Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto.' },
+  { name: 'finances.xlsx', body: 'A spreadsheet or worksheet is a file made of rows and columns that help sort data, arrange data easily, and calculate numerical data.' },
+  { name: 'logo.svg', body: 'Scalable Vector Graphics is an Extensible Markup Language-based vector image format for two-dimensional graphics with support for interactivity and animation.' },
+  { name: 'keys.gpg', body: 'GPG keys are used to encrypt and decrypt email, files, directories, and whole disk partitions and to authenticate messages.' },
+  { name: 'seed.txt', body: 'A seed phrase, seed recovery phrase or backup seed phrase is a list of words which store all the information needed to recover Bitcoin funds on-chain.' },
+];
 
 function ConceptualIcon({ type }: { type: NonNullable<BentoItem['conceptualIcon']> }) {
   const size = 28;
@@ -241,7 +254,209 @@ function TypographySample() {
   );
 }
 
-function BentoCard({ item, opacity, scale }: { item: BentoItem; opacity: number; scale: number }) {
+// BentoDemo-style: Marquee with scrolling file cards (frame-driven)
+function MarqueeFilesContent({ frame }: { frame: number }) {
+  const scrollDuration = 90;
+  const cardWidth = 100;
+  const totalWidth = MARQUEE_FILES.length * (cardWidth + 12);
+  const scrollX = interpolate(
+    (frame % scrollDuration) / scrollDuration,
+    [0, 1],
+    [0, -totalWidth],
+    { extrapolateRight: 'clamp' }
+  );
+  const blurPx = interpolate(frame, [0, 20], [2, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        top: 8,
+        left: 0,
+        right: 0,
+        height: 90,
+        overflow: 'hidden',
+        maskImage: 'linear-gradient(to top, transparent 40%, black 100%)',
+        WebkitMaskImage: 'linear-gradient(to top, transparent 40%, black 100%)',
+      }}
+    >
+      <div style={{ display: 'flex', gap: 12, transform: `translateX(${scrollX}px)`, width: 'max-content' }}>
+        {[...MARQUEE_FILES, ...MARQUEE_FILES].map((f, idx) => (
+          <div
+            key={idx}
+            style={{
+              width: cardWidth,
+              flexShrink: 0,
+              padding: 8,
+              borderRadius: 8,
+              border: '1px solid rgba(0,0,0,0.08)',
+              background: 'rgba(255,255,255,0.6)',
+              filter: `blur(${blurPx}px)`,
+            }}
+          >
+            <div style={{ fontSize: 10, fontWeight: 600, color: '#1a1a1a' }}>{f.name}</div>
+            <div style={{ fontSize: 8, color: '#6b7280', marginTop: 4, lineHeight: 1.3 }}>{f.body.slice(0, 60)}...</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// BentoDemo-style: Animated list with staggered entrance
+function AnimatedListContent({ frame }: { frame: number }) {
+  const items = [
+    { text: 'Deploy completed', sub: '2 min ago' },
+    { text: 'New team member', sub: 'Alex joined' },
+    { text: 'Integration ready', sub: 'Slack connected' },
+  ];
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        top: 8,
+        left: 0,
+        right: 0,
+        height: 90,
+        overflow: 'hidden',
+        maskImage: 'linear-gradient(to top, transparent 10%, black 100%)',
+        WebkitMaskImage: 'linear-gradient(to top, transparent 10%, black 100%)',
+      }}
+    >
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+        {items.map((item, i) => {
+          const start = i * 8;
+          const opacity = interpolate(frame, [start, start + 12], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+          const translateY = interpolate(frame, [start, start + 12], [8, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+          return (
+            <div
+              key={i}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                padding: '6px 8px',
+                background: 'rgba(255,255,255,0.8)',
+                borderRadius: 6,
+                opacity,
+                transform: `translateY(${translateY}px)`,
+              }}
+            >
+              <div style={{ width: 20, height: 20, borderRadius: 4, background: '#e5e7eb' }} />
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 10, fontWeight: 600, color: '#1a1a1a' }}>{item.text}</div>
+                <div style={{ fontSize: 8, color: '#9ca3af' }}>{item.sub}</div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// BentoDemo-style: Animated beam / connection lines
+function AnimatedBeamContent({ frame }: { frame: number }) {
+  const pathLength = 120;
+  const progress = interpolate(
+    frame % 45,
+    [0, 45],
+    [0, 1],
+    { extrapolateRight: 'clamp' }
+  );
+  const strokeOffset = pathLength * (1 - progress);
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        top: 4,
+        left: 4,
+        right: 4,
+        bottom: 4,
+        overflow: 'hidden',
+        maskImage: 'linear-gradient(to top, transparent 10%, black 100%)',
+        WebkitMaskImage: 'linear-gradient(to top, transparent 10%, black 100%)',
+      }}
+    >
+      <svg width="100%" height="100%" viewBox="0 0 120 100" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="beamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#3b82f6" />
+            <stop offset="100%" stopColor="#8b5cf6" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M 10 50 Q 60 20, 110 50"
+          fill="none"
+          stroke="url(#beamGrad)"
+          strokeWidth="2"
+          strokeDasharray={pathLength}
+          strokeDashoffset={strokeOffset}
+          strokeLinecap="round"
+        />
+        <path
+          d="M 10 70 Q 60 40, 110 70"
+          fill="none"
+          stroke="url(#beamGrad)"
+          strokeWidth="2"
+          strokeDasharray={pathLength}
+          strokeDashoffset={strokeOffset * 0.7}
+          strokeLinecap="round"
+          opacity={0.7}
+        />
+        <circle cx="10" cy="50" r="6" fill="#3b82f6" />
+        <circle cx="110" cy="50" r="6" fill="#8b5cf6" />
+      </svg>
+    </div>
+  );
+}
+
+// BentoDemo-style: Calendar grid
+function CalendarContent() {
+  const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  const dates = Array.from({ length: 35 }, (_, i) => (i < 7 ? null : i - 6));
+  const selected = 11;
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        top: 8,
+        right: 0,
+        padding: 8,
+        borderRadius: 8,
+        border: '1px solid #e5e7eb',
+        background: '#fff',
+        maskImage: 'linear-gradient(to top, transparent 40%, black 100%)',
+        WebkitMaskImage: 'linear-gradient(to top, transparent 40%, black 100%)',
+      }}
+    >
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 14px)', gap: 2, fontSize: 8 }}>
+        {days.map((d, i) => (
+          <div key={i} style={{ textAlign: 'center', color: '#9ca3af', fontWeight: 600 }}>{d}</div>
+        ))}
+        {dates.map((d, i) => (
+          <div
+            key={i}
+            style={{
+              width: 14,
+              height: 14,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 4,
+              background: d === selected ? '#3b82f6' : 'transparent',
+              color: d === selected ? '#fff' : '#374151',
+              fontWeight: d === selected ? 700 : 400,
+            }}
+          >
+            {d ?? ''}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function BentoCard({ item, opacity, scale, frame }: { item: BentoItem; opacity: number; scale: number; frame: number }) {
   const isWide = item.colSpan >= 2;
   const isLeftAligned = item.cardType !== 'icon-label' || isWide;
 
@@ -307,6 +522,42 @@ function BentoCard({ item, opacity, scale }: { item: BentoItem; opacity: number;
       <div style={baseCardStyle}>
         <div style={LABEL_STYLE}>{item.label}</div>
         <MockProgressBar />
+      </div>
+    );
+  }
+
+  if (item.cardType === 'marquee-files') {
+    return (
+      <div style={baseCardStyle}>
+        <div style={LABEL_STYLE}>{item.label}</div>
+        <MarqueeFilesContent frame={frame} />
+      </div>
+    );
+  }
+
+  if (item.cardType === 'animated-list') {
+    return (
+      <div style={baseCardStyle}>
+        <div style={LABEL_STYLE}>{item.label}</div>
+        <AnimatedListContent frame={frame} />
+      </div>
+    );
+  }
+
+  if (item.cardType === 'animated-beam') {
+    return (
+      <div style={baseCardStyle}>
+        <div style={LABEL_STYLE}>{item.label}</div>
+        <AnimatedBeamContent frame={frame} />
+      </div>
+    );
+  }
+
+  if (item.cardType === 'calendar') {
+    return (
+      <div style={baseCardStyle}>
+        <div style={LABEL_STYLE}>{item.label}</div>
+        <CalendarContent />
       </div>
     );
   }
@@ -407,7 +658,7 @@ export const Scene03bBento = () => {
                 gridRow: `${item.rowStart} / span ${item.rowSpan}`,
               }}
             >
-              <BentoCard item={item} opacity={opacity} scale={scale} />
+              <BentoCard item={item} opacity={opacity} scale={scale} frame={frame} />
             </div>
           );
         })}
