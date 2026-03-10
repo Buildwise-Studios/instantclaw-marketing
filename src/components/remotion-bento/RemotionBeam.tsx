@@ -7,6 +7,7 @@ export interface RemotionBeamProps {
   width?: number;
   height?: number;
   curvature?: number;
+  strokeWidth?: number;
   gradientStartColor?: string;
   gradientStopColor?: string;
   startFrame?: number;
@@ -20,6 +21,7 @@ export const RemotionBeam: React.FC<RemotionBeamProps> = ({
   width = 200,
   height = 100,
   curvature = 20,
+  strokeWidth = 2,
   gradientStartColor = '#D4A574',
   gradientStopColor = '#c53131',
   startFrame = 0,
@@ -27,6 +29,7 @@ export const RemotionBeam: React.FC<RemotionBeamProps> = ({
   className,
 }) => {
   const frame = useCurrentFrame();
+  const sw = strokeWidth;
   const controlY = Math.min(from.y, to.y) - curvature;
 
   const pathD = `M ${from.x},${from.y} Q ${(from.x + to.x) / 2},${controlY} ${to.x},${to.y}`;
@@ -74,13 +77,13 @@ export const RemotionBeam: React.FC<RemotionBeamProps> = ({
       <path
         d={pathD}
         stroke="rgba(128,128,128,0.2)"
-        strokeWidth={2}
+        strokeWidth={sw}
         strokeLinecap="round"
       />
       <path
         d={pathD}
         stroke={`url(#${id})`}
-        strokeWidth={2}
+        strokeWidth={sw}
         strokeOpacity={1}
         strokeLinecap="round"
       />

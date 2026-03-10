@@ -99,7 +99,7 @@ const moreFeatures = [
     className: 'col-span-2',
     background: (
       <LeadQualificationDemo
-        className={cn(BENTO_ABSOLUTE, 'h-[140px]', BENTO_MASK)}
+        className={cn(BENTO_ABSOLUTE, 'h-[240px]', BENTO_MASK)}
       />
     ),
   },
