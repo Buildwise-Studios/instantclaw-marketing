@@ -17,24 +17,53 @@ const RADIUS_V = (SCREEN_RADIUS / SCREEN_HEIGHT) * 100;
 
 type IPhoneFrameProps = {
   children: React.ReactNode;
+  tiltDeg?: number;
+  transformOrigin?: string;
   className?: string;
   style?: React.CSSProperties;
 };
 
 export const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
   children,
+  tiltDeg = 0,
+  transformOrigin = 'center center',
   className = '',
   style = {},
 }) => {
   return (
     <div
-      className={`relative inline-block w-full align-middle leading-none ${className}`}
       style={{
-        width: 800,
-        aspectRatio: `${PHONE_WIDTH}/${PHONE_HEIGHT}`,
+        perspective: '1400px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         ...style,
       }}
     >
+      <div
+        className={`relative inline-block w-full align-middle leading-none ${className}`}
+        style={{
+          width: 800,
+          aspectRatio: `${PHONE_WIDTH}/${PHONE_HEIGHT}`,
+          transform: tiltDeg ? `translateZ(1px) rotateY(${tiltDeg}deg)` : undefined,
+          transformOrigin,
+          transformStyle: 'preserve-3d',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
+          boxShadow: `0 ${24 + Math.abs(tiltDeg) * 2}px ${48 + Math.abs(tiltDeg) * 3}px rgba(0,0,0,${0.2 + Math.abs(tiltDeg) * 0.003})`,
+          borderRadius: 135,
+        }}
+      >
+        <div
+          style={{
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+            overflow: 'hidden',
+            borderRadius: 135,
+            backgroundColor: 'transparent',
+          }}
+        >
       {/* Screen content */}
       <div
         className="pointer-events-none absolute z-0 overflow-hidden"
@@ -136,6 +165,8 @@ export const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
           </mask>
         </defs>
       </svg>
+        </div>
+      </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   AbsoluteFill,
   useCurrentFrame,
+  useVideoConfig,
   interpolate,
   Img,
   staticFile,
@@ -17,6 +18,15 @@ So... what should I call you? And what would you like to call me? I could be an 
 
 export const Scene05bTelegram = () => {
   const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+
+  // 3D tilt: phone starts slightly rotated away, eases to facing viewer
+  const tiltDeg = interpolate(
+    frame,
+    [0, durationInFrames * 0.5],
+    [-18, 8],
+    { easing: Easing.out(Easing.cubic), extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
+  );
 
   // Phone entrance: scale up and fade in
   const entranceProgress = interpolate(
@@ -56,7 +66,7 @@ export const Scene05bTelegram = () => {
           justifyContent: 'center',
         }}
       >
-        <IPhoneFrame>
+        <IPhoneFrame tiltDeg={tiltDeg} transformOrigin="center center">
           <div
             style={{
               height: '100%',
@@ -148,8 +158,8 @@ export const Scene05bTelegram = () => {
                 {/* Agent message */}
                 <div
                   style={{
-                    maxWidth: '85%',
-                    padding: '16px 20px',
+                    maxWidth: '92%',
+                    padding: '20px 24px',
                     backgroundColor: '#1E2B3C',
                     borderRadius: 24,
                     borderBottomLeftRadius: 6,
@@ -158,7 +168,7 @@ export const Scene05bTelegram = () => {
                 >
                   <div
                     style={{
-                      fontSize: 18,
+                      fontSize: 34,
                       lineHeight: 1.5,
                       color: '#fff',
                       whiteSpace: 'pre-wrap',
@@ -169,10 +179,10 @@ export const Scene05bTelegram = () => {
                   </div>
                   <div
                     style={{
-                      fontSize: 13,
+                      fontSize: 15,
                       color: 'rgba(255,255,255,0.5)',
                       textAlign: 'right',
-                      marginTop: 8,
+                      marginTop: 10,
                     }}
                   >
                     14:26
