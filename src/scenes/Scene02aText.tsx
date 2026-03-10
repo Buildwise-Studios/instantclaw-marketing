@@ -18,7 +18,7 @@ export const Scene02aText = () => {
       <div style={{ maxWidth: '95%' }}>
         <TextFadeInByLine
           text="Meet InstantClaw"
-          startFrame={0}
+          startFrame={15}
           staggerFrames={8}
           fadeDurationFrames={20}
           fontSize={88}

@@ -17,7 +17,7 @@ export const Scene04aProblemText = () => {
     >
       <div style={{ maxWidth: '95%' }}>
         <TextFadeInByLine
-          text="Complicated to install & host"
+          text="But it's complicated to install & host"
           startFrame={0}
           staggerFrames={8}
           fadeDurationFrames={20}

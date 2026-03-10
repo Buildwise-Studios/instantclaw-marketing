@@ -17,21 +17,31 @@ const LINES = [
 const CHARS_PER_SEC = 55;
 const LINE_DELAY_FRAMES = 5;
 
+type TerminalLine = { text: string; color: string };
+
 type RemotionTerminalProps = {
   className?: string;
   fontSize?: number;
+  style?: React.CSSProperties;
+  prefixLines?: TerminalLine[];
 };
 
-export const RemotionTerminal: React.FC<RemotionTerminalProps> = ({ className = '', fontSize = 18 }) => {
+export const RemotionTerminal: React.FC<RemotionTerminalProps> = ({
+  className = '',
+  fontSize = 18,
+  style,
+  prefixLines = [],
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
   const charsPerFrame = CHARS_PER_SEC / fps;
+  const allLines = [...prefixLines, ...LINES];
 
   const getLineStartFrame = (index: number) => {
     let start = 0;
     for (let i = 0; i < index; i++) {
-      start += LINES[i].text.length / charsPerFrame + LINE_DELAY_FRAMES;
+      start += allLines[i].text.length / charsPerFrame + LINE_DELAY_FRAMES;
     }
     return start;
   };
@@ -49,6 +59,7 @@ export const RemotionTerminal: React.FC<RemotionTerminalProps> = ({ className = 
         minHeight: 420,
         display: 'flex',
         flexDirection: 'column',
+        ...style,
       }}
     >
       <div
@@ -70,12 +81,14 @@ export const RemotionTerminal: React.FC<RemotionTerminalProps> = ({ className = 
           padding: 16,
           margin: 0,
           overflow: 'hidden',
+          overflowWrap: 'break-word',
+          whiteSpace: 'pre-wrap',
           lineHeight: 1.6,
           flex: 1,
         }}
       >
         <code style={{ display: 'grid', gap: 4 }}>
-          {LINES.map((line, index) => {
+          {allLines.map((line, index) => {
             const lineCharCount = line.text.length;
             const startFrame = getLineStartFrame(index);
 

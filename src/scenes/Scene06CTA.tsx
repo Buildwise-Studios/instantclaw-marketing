@@ -1,5 +1,5 @@
 import React from 'react';
-import { AbsoluteFill, Img, staticFile } from 'remotion';
+import { AbsoluteFill, Img, staticFile, useCurrentFrame } from 'remotion';
 import { loadFont } from '@remotion/google-fonts/PlusJakartaSans';
 import { GradientTextTyping } from '../components/GradientTextTyping';
 
@@ -9,7 +9,10 @@ const FPS = 30;
 const SCENE_DURATION = 3 * FPS; // 3 seconds (27-30s in full reel)
 
 export const Scene06CTA = () => {
-  const logoUrl = staticFile('instantclaw-logo.svg');
+  const frame = useCurrentFrame();
+  const logoUrl = staticFile('instantclaw-logo.png');
+  // Same subtle pulse as Scene03c Orbiting: gentle scale 1 → 1.02 → 1 (~1.5s cycle)
+  const logoPulseScale = 1 + 0.02 * Math.sin((frame / 45) * Math.PI * 2);
 
   return (
     <AbsoluteFill
@@ -33,7 +36,11 @@ export const Scene06CTA = () => {
         <Img
           src={logoUrl}
           alt="InstantClaw"
-          style={{ width: 200, height: 200 }}
+          style={{
+            width: 200,
+            height: 200,
+            transform: `scale(${logoPulseScale})`,
+          }}
         />
         <GradientTextTyping
           text="Instantclaw.co"

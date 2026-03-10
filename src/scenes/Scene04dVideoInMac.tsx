@@ -10,7 +10,7 @@ import {
 import { Video } from '@remotion/media';
 import { MacWindow } from '../components/MacWindow';
 
-const SCENE_VIDEO = staticFile('assets/Deployment.mp4');
+const SCENE_VIDEO = staticFile('assets/deployment-new.mp4');
 
 export const Scene04dVideoInMac = () => {
   const frame = useCurrentFrame();

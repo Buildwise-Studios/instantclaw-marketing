@@ -10,7 +10,7 @@ import {
 import { Video } from '@remotion/media';
 import { MacWindow } from '../components/MacWindow';
 
-const DEPLOY_VIDEO = staticFile('assets/deploy-form.mov');
+const DEPLOY_VIDEO = staticFile('assets/deploy-new.mp4');
 
 export const Scene02bDeployButton = () => {
   const frame = useCurrentFrame();

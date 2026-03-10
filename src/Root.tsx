@@ -4,6 +4,7 @@ import { Composition } from 'remotion';
 import { DeploySteps3DTilt } from './DeploySteps3DTilt';
 import { Scene01aText } from './scenes/Scene01aText';
 import { Scene01bTerminal } from './scenes/Scene01bTerminal';
+import { Scene01bTerminalFullscreen } from './scenes/Scene01bTerminalFullscreen';
 import { Scene02aText } from './scenes/Scene02aText';
 import { Scene02bDeployButton } from './scenes/Scene02bDeployButton';
 import { Scene03aText } from './scenes/Scene03aText';
@@ -11,6 +12,7 @@ import { Scene03bBento } from './scenes/Scene03bBento';
 import { Scene03cOrbiting } from './scenes/Scene03cOrbiting';
 import { Scene04aProblemText } from './scenes/Scene04aProblemText';
 import { Scene04bTerminalToDeploy } from './scenes/Scene04bTerminalToDeploy';
+import { Scene04bTextStack } from './scenes/Scene04bTextStack';
 import { Scene04cSolutionText } from './scenes/Scene04cSolutionText';
 import { Scene04dVideoInMac } from './scenes/Scene04dVideoInMac';
 import { Scene05Timer } from './scenes/Scene05Timer';
@@ -28,7 +30,7 @@ const DURATION_FRAMES = Math.ceil(DURATION_SEC * FPS);
 const SCENE01a_FRAMES = Math.ceil(1.5 * FPS);
 const SCENE01b_FRAMES = Math.ceil(3 * FPS);
 // Scene 2a: 1.5s text, Scene 2b: 3.5s deploy button
-const SCENE02a_FRAMES = Math.ceil(1.5 * FPS);
+const SCENE02a_FRAMES = Math.ceil(2.5 * FPS);
 const SCENE02b_FRAMES = Math.ceil(3.5 * FPS);
 // Scene 3a: 1.5s text, 3b: bento (4s), 3c: orbiting full-screen (4s)
 const SCENE03a_FRAMES = Math.ceil(1.5 * FPS);
@@ -95,6 +97,15 @@ export const RemotionRoot = () => {
         defaultProps={{}}
       />
       <Composition
+        id="Scene01bTerminalFullscreen"
+        component={Scene01bTerminalFullscreen}
+        durationInFrames={SCENE01b_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{}}
+      />
+      <Composition
         id="Scene02aText"
         component={Scene02aText}
         durationInFrames={SCENE02a_FRAMES}
@@ -151,6 +162,15 @@ export const RemotionRoot = () => {
       <Composition
         id="Scene04bTerminalToDeploy"
         component={Scene04bTerminalToDeploy}
+        durationInFrames={SCENE04b_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{}}
+      />
+      <Composition
+        id="Scene04bTextStack"
+        component={Scene04bTextStack}
         durationInFrames={SCENE04b_FRAMES}
         fps={FPS}
         width={1080}

@@ -206,7 +206,7 @@ export const Scene03cOrbiting = () => {
           }}
         >
           <Img
-            src={staticFile('new-instantclaw-logo.svg')}
+            src={staticFile('instantclaw-logo.png')}
             alt="InstantClaw"
             style={{
               width: LOGO_SIZE,

@@ -1,14 +1,19 @@
 import React from 'react';
-import { AbsoluteFill, Sequence } from 'remotion';
+import { AbsoluteFill } from 'remotion';
+import { TransitionSeries, linearTiming } from '@remotion/transitions';
+import { fade } from '@remotion/transitions/fade';
+import { iris } from '@remotion/transitions/iris';
+import { slide } from '@remotion/transitions/slide';
+import { wipe } from '@remotion/transitions/wipe';
 import { Scene01aText } from './scenes/Scene01aText';
-import { Scene01bTerminal } from './scenes/Scene01bTerminal';
+import { Scene01bTerminalFullscreen } from './scenes/Scene01bTerminalFullscreen';
 import { Scene02aText } from './scenes/Scene02aText';
 import { Scene02bDeployButton } from './scenes/Scene02bDeployButton';
 import { Scene03aText } from './scenes/Scene03aText';
 import { Scene03bBento } from './scenes/Scene03bBento';
 import { Scene03cOrbiting } from './scenes/Scene03cOrbiting';
 import { Scene04aProblemText } from './scenes/Scene04aProblemText';
-import { Scene04bTerminalToDeploy } from './scenes/Scene04bTerminalToDeploy';
+import { Scene04bTextStack } from './scenes/Scene04bTextStack';
 import { Scene04cSolutionText } from './scenes/Scene04cSolutionText';
 import { Scene04dVideoInMac } from './scenes/Scene04dVideoInMac';
 import { Scene05Timer } from './scenes/Scene05Timer';
@@ -17,7 +22,7 @@ import { Scene06CTA } from './scenes/Scene06CTA';
 const FPS = 30;
 const SCENE01a_FRAMES = Math.ceil(1.5 * FPS);
 const SCENE01b_FRAMES = Math.ceil(3 * FPS);
-const SCENE02a_FRAMES = Math.ceil(1.5 * FPS);
+const SCENE02a_FRAMES = Math.ceil(2.5 * FPS);
 const SCENE02b_FRAMES = Math.ceil(3.5 * FPS);
 const SCENE03a_FRAMES = Math.ceil(1.5 * FPS);
 const SCENE03b_FRAMES = Math.ceil(4 * FPS);
@@ -29,6 +34,15 @@ const SCENE04d_FRAMES = Math.ceil(4 * FPS);
 const SCENE05_FRAMES = 5 * FPS;
 const SCENE06_FRAMES = 3 * FPS;
 
+// Transition durations (in frames)
+const T8 = linearTiming({ durationInFrames: 8 });
+const T15 = linearTiming({ durationInFrames: 15 });
+const T18 = linearTiming({ durationInFrames: 18 });
+const T23 = linearTiming({ durationInFrames: 23 }); // replaces spring for 03a→03b and 04c→04d
+
+// Total = sum(sequences) - sum(transition overlaps)
+// 15+15+15+15+23+18+15+15+8+23+15+18 = 195
+const TRANSITION_OVERLAP_TOTAL = 15 * 7 + 8 + 18 * 2 + 23 * 2;
 const INSTANTCLAW_LAUNCH_REEL_FRAMES =
   SCENE01a_FRAMES +
   SCENE01b_FRAMES +
@@ -42,51 +56,65 @@ const INSTANTCLAW_LAUNCH_REEL_FRAMES =
   SCENE04c_FRAMES +
   SCENE04d_FRAMES +
   SCENE05_FRAMES +
-  SCENE06_FRAMES;
+  SCENE06_FRAMES -
+  TRANSITION_OVERLAP_TOTAL;
 
 export const InstantClawLaunchReel = () => {
-  let offset = 0;
   return (
     <AbsoluteFill>
-      <Sequence from={offset} durationInFrames={SCENE01a_FRAMES}>
-        <Scene01aText />
-      </Sequence>
-      <Sequence from={(offset += SCENE01a_FRAMES)} durationInFrames={SCENE01b_FRAMES}>
-        <Scene01bTerminal />
-      </Sequence>
-      <Sequence from={(offset += SCENE01b_FRAMES)} durationInFrames={SCENE02a_FRAMES}>
-        <Scene02aText />
-      </Sequence>
-      <Sequence from={(offset += SCENE02a_FRAMES)} durationInFrames={SCENE02b_FRAMES}>
-        <Scene02bDeployButton />
-      </Sequence>
-      <Sequence from={(offset += SCENE02b_FRAMES)} durationInFrames={SCENE03a_FRAMES}>
-        <Scene03aText />
-      </Sequence>
-      <Sequence from={(offset += SCENE03a_FRAMES)} durationInFrames={SCENE03b_FRAMES}>
-        <Scene03bBento />
-      </Sequence>
-      <Sequence from={(offset += SCENE03b_FRAMES)} durationInFrames={SCENE03c_FRAMES}>
-        <Scene03cOrbiting />
-      </Sequence>
-      <Sequence from={(offset += SCENE03c_FRAMES)} durationInFrames={SCENE04a_FRAMES}>
-        <Scene04aProblemText />
-      </Sequence>
-      <Sequence from={(offset += SCENE04a_FRAMES)} durationInFrames={SCENE04b_FRAMES}>
-        <Scene04bTerminalToDeploy />
-      </Sequence>
-      <Sequence from={(offset += SCENE04b_FRAMES)} durationInFrames={SCENE04c_FRAMES}>
-        <Scene04cSolutionText />
-      </Sequence>
-      <Sequence from={(offset += SCENE04c_FRAMES)} durationInFrames={SCENE04d_FRAMES}>
-        <Scene04dVideoInMac />
-      </Sequence>
-      <Sequence from={(offset += SCENE04d_FRAMES)} durationInFrames={SCENE05_FRAMES}>
-        <Scene05Timer />
-      </Sequence>
-      <Sequence from={(offset += SCENE05_FRAMES)} durationInFrames={SCENE06_FRAMES}>
-        <Scene06CTA />
-      </Sequence>
+      <TransitionSeries>
+        <TransitionSeries.Sequence durationInFrames={SCENE01a_FRAMES}>
+          <Scene01aText />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={T15} />
+        <TransitionSeries.Sequence durationInFrames={SCENE01b_FRAMES}>
+          <Scene01bTerminalFullscreen />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={slide({ direction: 'from-right' })} timing={T15} />
+        <TransitionSeries.Sequence durationInFrames={SCENE02a_FRAMES}>
+          <Scene02aText />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={T15} />
+        <TransitionSeries.Sequence durationInFrames={SCENE02b_FRAMES}>
+          <Scene02bDeployButton />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={T15} />
+        <TransitionSeries.Sequence durationInFrames={SCENE03a_FRAMES}>
+          <Scene03aText />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={wipe({ direction: 'from-top-left' })} timing={T23} />
+        <TransitionSeries.Sequence durationInFrames={SCENE03b_FRAMES}>
+          <Scene03bBento />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={wipe({ direction: 'from-left' })} timing={T18} />
+        <TransitionSeries.Sequence durationInFrames={SCENE03c_FRAMES}>
+          <Scene03cOrbiting />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={iris({ width: 1080, height: 1920 })} timing={T15} />
+        <TransitionSeries.Sequence durationInFrames={SCENE04a_FRAMES}>
+          <Scene04aProblemText />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={wipe({ direction: 'from-top' })} timing={T15} />
+        <TransitionSeries.Sequence durationInFrames={SCENE04b_FRAMES}>
+          <Scene04bTextStack />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={T8} />
+        <TransitionSeries.Sequence durationInFrames={SCENE04c_FRAMES}>
+          <Scene04cSolutionText />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={slide({ direction: 'from-right' })} timing={T23} />
+        <TransitionSeries.Sequence durationInFrames={SCENE04d_FRAMES}>
+          <Scene04dVideoInMac />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={T15} />
+        <TransitionSeries.Sequence durationInFrames={SCENE05_FRAMES}>
+          <Scene05Timer />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={T18} />
+        <TransitionSeries.Sequence durationInFrames={SCENE06_FRAMES}>
+          <Scene06CTA />
+        </TransitionSeries.Sequence>
+      </TransitionSeries>
     </AbsoluteFill>
   );
 };
