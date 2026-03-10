@@ -7,7 +7,7 @@ const waveformBars = [32, 48, 28, 55, 42, 58, 35, 62, 45, 52, 38, 48];
 function WaveformBar({ height }: { height: number }) {
   return (
     <div
-      className="w-2 rounded-full bg-[#D4A574]/60"
+      className="w-2 rounded-full bg-white ring-1 ring-neutral-200/80"
       style={{ height: `${height}px` }}
     />
   );
@@ -26,13 +26,15 @@ function WaveformRow() {
 export function TranscribeWaveformDemo({ className }: { className?: string }) {
   return (
     <div className={cn('flex flex-col gap-3 p-4', className)}>
-      <RemotionMarquee className="flex gap-3 [--duration:15s]">
-        <WaveformRow />
-        <WaveformRow />
-      </RemotionMarquee>
-      <p className="text-xs text-neutral-500 font-mono truncate max-w-[200px]">
-        &quot;Meeting notes: Q1 review...&quot;
-      </p>
+      <div className="rounded-lg bg-white/35 p-3">
+        <RemotionMarquee className="flex gap-3 [--duration:15s]">
+          <WaveformRow />
+          <WaveformRow />
+        </RemotionMarquee>
+        <p className="mt-2 text-xs text-neutral-600 font-mono truncate max-w-[200px]">
+          &quot;Meeting notes: Q1 review...&quot;
+        </p>
+      </div>
     </div>
   );
 }

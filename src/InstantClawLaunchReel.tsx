@@ -17,6 +17,7 @@ import { Scene04bTextStack } from './scenes/Scene04bTextStack';
 import { Scene04cSolutionText } from './scenes/Scene04cSolutionText';
 import { Scene04dVideoInMac } from './scenes/Scene04dVideoInMac';
 import { Scene05Timer } from './scenes/Scene05Timer';
+import { Scene05bTelegram } from './scenes/Scene05bTelegram';
 import { Scene06CTA } from './scenes/Scene06CTA';
 
 const FPS = 30;
@@ -32,6 +33,7 @@ const SCENE04b_FRAMES = Math.ceil(4 * FPS);
 const SCENE04c_FRAMES = Math.ceil(2.5 * FPS);
 const SCENE04d_FRAMES = Math.ceil(4 * FPS);
 const SCENE05_FRAMES = 5 * FPS;
+const SCENE05b_FRAMES = 6 * FPS;
 const SCENE06_FRAMES = 3 * FPS;
 
 // Transition durations (in frames)
@@ -41,8 +43,7 @@ const T18 = linearTiming({ durationInFrames: 18 });
 const T23 = linearTiming({ durationInFrames: 23 }); // replaces spring for 03a→03b and 04c→04d
 
 // Total = sum(sequences) - sum(transition overlaps)
-// 15+15+15+15+23+18+15+15+8+23+15+18 = 195
-const TRANSITION_OVERLAP_TOTAL = 15 * 7 + 8 + 18 * 2 + 23 * 2;
+const TRANSITION_OVERLAP_TOTAL = 15 * 8 + 8 + 18 * 2 + 23 * 2;
 const INSTANTCLAW_LAUNCH_REEL_FRAMES =
   SCENE01a_FRAMES +
   SCENE01b_FRAMES +
@@ -56,6 +57,7 @@ const INSTANTCLAW_LAUNCH_REEL_FRAMES =
   SCENE04c_FRAMES +
   SCENE04d_FRAMES +
   SCENE05_FRAMES +
+  SCENE05b_FRAMES +
   SCENE06_FRAMES -
   TRANSITION_OVERLAP_TOTAL;
 
@@ -109,6 +111,10 @@ export const InstantClawLaunchReel = () => {
         <TransitionSeries.Transition presentation={fade()} timing={T15} />
         <TransitionSeries.Sequence durationInFrames={SCENE05_FRAMES}>
           <Scene05Timer />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={T15} />
+        <TransitionSeries.Sequence durationInFrames={SCENE05b_FRAMES}>
+          <Scene05bTelegram />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={T18} />
         <TransitionSeries.Sequence durationInFrames={SCENE06_FRAMES}>

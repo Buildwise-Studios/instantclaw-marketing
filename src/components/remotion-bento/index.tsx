@@ -12,8 +12,21 @@ import {
   Plane,
 } from 'lucide-react';
 import { BentoGrid, BentoGridCard, BENTO_ABSOLUTE, BENTO_MASK } from './BentoGrid';
-import { BentoCard } from './BentoCard';
+import { BentoCard, type AccentColor } from './BentoCard';
 import { cn } from '../../lib/utils';
+
+const ACCENT_COLORS: AccentColor[] = [
+  { bg: '#4A90D9' },   // Transcribe - blue
+  { bg: '#34C759' },   // Spreadsheet - green
+  { bg: '#FF6482' },   // Email - pink
+  { bg: '#AF52DE' },   // Meeting Notes - purple
+  { bg: '#FF9500' },   // PDF - orange
+  { bg: '#5AC8FA' },   // Social - light blue
+  { bg: '#FF3B30' },   // Lead Qual - red
+  { bg: '#32C9D9' },   // Invoice - teal
+  { bg: '#5856D6' },   // Code Review - indigo
+  { bg: '#FFCC00' },   // Travel - yellow
+];
 import { TranscribeWaveformDemo } from './demos/TranscribeWaveformDemo';
 import { SpreadsheetSparkline } from './demos/SpreadsheetSparkline';
 import { EmailTriageDemo } from './demos/EmailTriageDemo';
@@ -138,7 +151,7 @@ const moreFeatures = [
   },
 ];
 
-export function RemotionBentoGrid() {
+export function RemotionBentoGrid({ colored = false }: { colored?: boolean }) {
   return (
     <BentoGrid className="w-[1080px] h-[1920px] grid-rows-5">
       {moreFeatures.map((feature, idx) => (
@@ -155,6 +168,7 @@ export function RemotionBentoGrid() {
             background={feature.background}
             Icon={feature.Icon}
             description={feature.description}
+            accent={colored ? ACCENT_COLORS[idx] : undefined}
           />
         </BentoGridCard>
       ))}

@@ -16,6 +16,7 @@ import { Scene04bTextStack } from './scenes/Scene04bTextStack';
 import { Scene04cSolutionText } from './scenes/Scene04cSolutionText';
 import { Scene04dVideoInMac } from './scenes/Scene04dVideoInMac';
 import { Scene05Timer } from './scenes/Scene05Timer';
+import { Scene05bTelegram } from './scenes/Scene05bTelegram';
 import { Scene06CTA } from './scenes/Scene06CTA';
 import { SceneTextValidation } from './scenes/SceneTextValidation';
 import { InstantClawLaunchReel, INSTANTCLAW_LAUNCH_REEL_FRAMES } from './InstantClawLaunchReel';
@@ -43,6 +44,7 @@ const SCENE04b_FRAMES = Math.ceil(4 * FPS);
 const SCENE04c_FRAMES = Math.ceil(2.5 * FPS);
 const SCENE04d_FRAMES = Math.ceil(4 * FPS);
 const SCENE05_FRAMES = 5 * FPS;
+const SCENE05b_FRAMES = 6 * FPS;
 const SCENE06_FRAMES = 3 * FPS;
 
 // TextValidation: ~15 seconds to compare all 10 fonts
@@ -199,6 +201,15 @@ export const RemotionRoot = () => {
         id="Scene05Timer"
         component={Scene05Timer}
         durationInFrames={SCENE05_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{}}
+      />
+      <Composition
+        id="Scene05bTelegram"
+        component={Scene05bTelegram}
+        durationInFrames={SCENE05b_FRAMES}
         fps={FPS}
         width={1080}
         height={1920}

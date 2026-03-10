@@ -37,7 +37,7 @@ export const Scene03bBento = () => {
           justifyContent: 'center',
         }}
       >
-        <RemotionBentoGrid />
+        <RemotionBentoGrid colored />
       </div>
     </AbsoluteFill>
   );

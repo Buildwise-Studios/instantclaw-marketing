@@ -7,16 +7,18 @@ export function SpreadsheetSparkline({ className }: { className?: string }) {
   const max = Math.max(...values);
   return (
     <div className={cn('flex flex-col gap-2 p-4', className)}>
-      <div className="flex items-end gap-1 h-16">
-        {values.map((v, i) => (
-          <div
-            key={i}
-            className="flex-1 min-w-[4px] rounded-sm bg-[#D4A574]/50"
-            style={{ height: `${(v / max) * 100}%` }}
-          />
-        ))}
+      <div className="rounded-lg bg-white/35 p-3">
+        <div className="flex items-end gap-1 h-16">
+          {values.map((v, i) => (
+            <div
+              key={i}
+              className="flex-1 min-w-[4px] rounded-sm bg-white ring-1 ring-neutral-200/80"
+              style={{ height: `${(v / max) * 100}%` }}
+            />
+          ))}
+        </div>
+        <p className="mt-2 text-xs font-medium text-neutral-700">+24% vs last week</p>
       </div>
-      <p className="text-xs font-medium text-[#1D1C1D]">+24% vs last week</p>
     </div>
   );
 }
