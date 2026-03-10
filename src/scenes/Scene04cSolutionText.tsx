@@ -1,6 +1,9 @@
 import React from 'react';
 import { AbsoluteFill } from 'remotion';
+import { loadFont } from '@remotion/google-fonts/PlusJakartaSans';
 import { TextFadeInByLine } from '../components/TextFadeInByLine';
+
+const { fontFamily: plusJakarta } = loadFont('normal', { weights: ['700'], subsets: ['latin'] });
 
 export const Scene04cSolutionText = () => {
   return (
@@ -19,6 +22,7 @@ export const Scene04cSolutionText = () => {
           staggerFrames={8}
           fadeDurationFrames={20}
           fontSize={88}
+          fontFamily={plusJakarta}
         />
       </div>
     </AbsoluteFill>

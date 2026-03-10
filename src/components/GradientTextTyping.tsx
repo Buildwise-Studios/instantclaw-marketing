@@ -15,6 +15,7 @@ type GradientTextTypingProps = {
   fontSize?: number;
   showCursor?: boolean;
   blinkFrames?: number;
+  fontFamily?: string;
 };
 
 export const GradientTextTyping: React.FC<GradientTextTypingProps> = ({
@@ -25,6 +26,7 @@ export const GradientTextTyping: React.FC<GradientTextTypingProps> = ({
   fontSize = 48,
   showCursor = true,
   blinkFrames = 16,
+  fontFamily: customFontFamily,
 }) => {
   const frame = useCurrentFrame();
 
@@ -50,7 +52,7 @@ export const GradientTextTyping: React.FC<GradientTextTypingProps> = ({
       style={{
         fontSize,
         fontWeight: 700,
-        fontFamily,
+        fontFamily: customFontFamily ?? fontFamily,
         background: BRAND_GRADIENT,
         backgroundSize: '200% auto',
         WebkitBackgroundClip: 'text',

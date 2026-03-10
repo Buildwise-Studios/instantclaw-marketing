@@ -13,6 +13,7 @@ type TextFadeInByLineProps = {
   staggerFrames?: number;
   fadeDurationFrames?: number;
   fontSize?: number;
+  fontFamily?: string;
 };
 
 /**
@@ -24,6 +25,7 @@ export const TextFadeInByLine: React.FC<TextFadeInByLineProps> = ({
   staggerFrames = 8,
   fadeDurationFrames = 20,
   fontSize = 88,
+  fontFamily: customFontFamily,
 }) => {
   const frame = useCurrentFrame();
   const lines = text.split('\n');
@@ -35,7 +37,7 @@ export const TextFadeInByLine: React.FC<TextFadeInByLineProps> = ({
         flexDirection: 'column',
         alignItems: 'center',
         gap: '0.2em',
-        fontFamily,
+        fontFamily: customFontFamily ?? fontFamily,
         fontWeight: 700,
         fontSize,
         lineHeight: 1.2,

@@ -13,7 +13,6 @@ import { Scene04aProblemText } from './scenes/Scene04aProblemText';
 import { Scene04bTerminalToDeploy } from './scenes/Scene04bTerminalToDeploy';
 import { Scene04cSolutionText } from './scenes/Scene04cSolutionText';
 import { Scene04dVideoInMac } from './scenes/Scene04dVideoInMac';
-import { Scene04ProblemSolution } from './scenes/Scene04ProblemSolution';
 import { Scene05Timer } from './scenes/Scene05Timer';
 import { Scene06CTA } from './scenes/Scene06CTA';
 import { SceneTextValidation } from './scenes/SceneTextValidation';
@@ -171,15 +170,6 @@ export const RemotionRoot = () => {
         id="Scene04dVideoInMac"
         component={Scene04dVideoInMac}
         durationInFrames={SCENE04d_FRAMES}
-        fps={FPS}
-        width={1080}
-        height={1920}
-        defaultProps={{}}
-      />
-      <Composition
-        id="Scene04ProblemSolution"
-        component={Scene04ProblemSolution}
-        durationInFrames={SCENE04_FRAMES}
         fps={FPS}
         width={1080}
         height={1920}

@@ -1,6 +1,9 @@
 import React from 'react';
 import { AbsoluteFill, Img, staticFile } from 'remotion';
+import { loadFont } from '@remotion/google-fonts/PlusJakartaSans';
 import { GradientTextTyping } from '../components/GradientTextTyping';
+
+const { fontFamily: plusJakarta } = loadFont('normal', { weights: ['700'], subsets: ['latin'] });
 
 const FPS = 30;
 const SCENE_DURATION = 3 * FPS; // 3 seconds (27-30s in full reel)
@@ -38,6 +41,7 @@ export const Scene06CTA = () => {
           charFrames={2}
           fontSize={56}
           showCursor={false}
+          fontFamily={plusJakarta}
         />
       </div>
     </AbsoluteFill>
