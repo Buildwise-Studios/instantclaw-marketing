@@ -85,6 +85,10 @@ export const Scene02bDeployButton = () => {
               height: 520,
               overflow: 'hidden',
               background: '#fff',
+              paddingTop: 28,
+              paddingLeft: 64,
+              paddingRight: 16,
+              paddingBottom: 16,
             }}
           >
             <Video
