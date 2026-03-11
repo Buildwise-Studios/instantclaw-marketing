@@ -18,20 +18,20 @@ So... what should I call you? And what would you like to call me? I could be an 
 export const Scene05bTelegram = () => {
   const frame = useCurrentFrame();
 
-  // Phone entrance: scale up and fade in
+  // Phone entrance: scale up and fade in (faster)
   const entranceProgress = interpolate(
     frame,
-    [0, 25],
+    [0, 18],
     [0, 1],
     { easing: Easing.out(Easing.cubic), extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
   );
   const scale = interpolate(entranceProgress, [0, 1], [0.9, 1], { extrapolateRight: 'clamp' });
   const opacity = entranceProgress;
 
-  // Message appears in one go after short delay
+  // Message appears in one go after short delay (message fully visible ~frame 22)
   const messageOpacity = interpolate(
     frame,
-    [15, 30],
+    [10, 22],
     [0, 1],
     { easing: Easing.out(Easing.cubic), extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
   );

@@ -9,7 +9,7 @@ const CHAR_FRAMES = 2;
 const BLINK_FRAMES = 16;
 const PAUSE_AFTER_LINE1 = 30; // 1 second at 30fps
 
-const LINE1 = "Deploy in 1 min";
+const LINE1 = "Install in 1min";
 const LINE2 = "You're live";
 
 const LINE1_TYPE_END = LINE1.length * CHAR_FRAMES;

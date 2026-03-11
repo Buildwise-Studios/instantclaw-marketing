@@ -9,6 +9,7 @@ import { Scene02aText } from './scenes/Scene02aText';
 import { Scene02bDeployButton } from './scenes/Scene02bDeployButton';
 import { Scene03aText } from './scenes/Scene03aText';
 import { Scene03bBento } from './scenes/Scene03bBento';
+import { Scene03b2Text } from './scenes/Scene03b2Text';
 import { Scene03cOrbiting } from './scenes/Scene03cOrbiting';
 import { Scene04aProblemText } from './scenes/Scene04aProblemText';
 import { Scene04bTerminalToDeploy } from './scenes/Scene04bTerminalToDeploy';
@@ -36,6 +37,7 @@ const SCENE02b_FRAMES = Math.ceil(3.5 * FPS);
 // Scene 3a: 1.5s text, 3b: bento (4s), 3c: orbiting full-screen (4s)
 const SCENE03a_FRAMES = Math.ceil(1.5 * FPS);
 const SCENE03b_FRAMES = Math.ceil(4 * FPS);
+const SCENE03b2_FRAMES = Math.ceil(1.2 * FPS);
 const SCENE03c_FRAMES = Math.ceil(4 * FPS);
 // Scene 4 split: 4a problem (3s), 4b terminal→deploy (4s), 4c solution (2.5s), 4d video (4s)
 const SCENE04_FRAMES = 7 * FPS; // legacy combined
@@ -138,6 +140,15 @@ export const RemotionRoot = () => {
         id="Scene03bBento"
         component={Scene03bBento}
         durationInFrames={SCENE03b_FRAMES}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        defaultProps={{}}
+      />
+      <Composition
+        id="Scene03b2Text"
+        component={Scene03b2Text}
+        durationInFrames={SCENE03b2_FRAMES}
         fps={FPS}
         width={1080}
         height={1920}

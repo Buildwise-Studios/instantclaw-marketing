@@ -72,12 +72,11 @@ export const Scene02bDeployButton = () => {
           justifyContent: 'center',
         }}
       >
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
-          <MacWindow
-            tiltDeg={tiltDeg}
-            transformOrigin="right center"
-            style={{ width: '100%', maxWidth: 640 }}
-          >
+        <MacWindow
+          tiltDeg={tiltDeg}
+          transformOrigin="right center"
+          style={{ width: '100%' }}
+        >
           <div
             style={{
               position: 'relative',
@@ -85,10 +84,7 @@ export const Scene02bDeployButton = () => {
               height: 520,
               overflow: 'hidden',
               background: '#fff',
-              paddingTop: 28,
-              paddingLeft: 64,
-              paddingRight: 16,
-              paddingBottom: 16,
+              paddingTop: 36,
             }}
           >
             <Video
@@ -101,7 +97,6 @@ export const Scene02bDeployButton = () => {
             />
           </div>
         </MacWindow>
-        </div>
       </div>
     </AbsoluteFill>
   );

@@ -1,11 +1,11 @@
 import React from 'react';
 import { AbsoluteFill } from 'remotion';
 import { loadFont } from '@remotion/google-fonts/PlusJakartaSans';
-import { TextStackAccumulate } from '../components/TextStackAccumulate';
+import { TextFadeInByLine } from '../components/TextFadeInByLine';
 
 const { fontFamily: plusJakarta } = loadFont('normal', { weights: ['700'], subsets: ['latin'] });
 
-export const Scene04bTextStack = () => {
+export const Scene03b2Text = () => {
   return (
     <AbsoluteFill
       style={{
@@ -16,12 +16,12 @@ export const Scene04bTextStack = () => {
       }}
     >
       <div style={{ maxWidth: '95%' }}>
-        <TextStackAccumulate
-          text={'VPS\nSSH\nConfig'}
+        <TextFadeInByLine
+          text="With your apps"
           startFrame={0}
           staggerFrames={8}
-          fadeDurationFrames={14}
-          fontSize={96}
+          fadeDurationFrames={20}
+          fontSize={88}
           fontFamily={plusJakarta}
         />
       </div>
