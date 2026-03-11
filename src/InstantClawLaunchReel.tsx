@@ -21,29 +21,30 @@ import { Scene05bTelegram } from './scenes/Scene05bTelegram';
 import { Scene06CTA } from './scenes/Scene06CTA';
 
 const FPS = 30;
-const SCENE01a_FRAMES = Math.ceil(1.5 * FPS);
-const SCENE01b_FRAMES = Math.ceil(3 * FPS);
-const SCENE02a_FRAMES = Math.ceil(2.5 * FPS);
+// Snappier pacing: ~40–45 seconds total
+const SCENE01a_FRAMES = Math.ceil(1.2 * FPS);
+const SCENE01b_FRAMES = Math.ceil(2.5 * FPS);
+const SCENE02a_FRAMES = Math.ceil(1.8 * FPS);
 const SCENE02b_FRAMES = Math.ceil(3.5 * FPS);
-const SCENE03a_FRAMES = Math.ceil(1.5 * FPS);
+const SCENE03a_FRAMES = Math.ceil(1.2 * FPS);
 const SCENE03b_FRAMES = Math.ceil(4 * FPS);
-const SCENE03c_FRAMES = Math.ceil(4 * FPS);
-const SCENE04a_FRAMES = Math.ceil(3 * FPS);
-const SCENE04b_FRAMES = Math.ceil(4 * FPS);
-const SCENE04c_FRAMES = Math.ceil(2.5 * FPS);
+const SCENE03c_FRAMES = Math.ceil(3.5 * FPS);
+const SCENE04a_FRAMES = Math.ceil(2.5 * FPS);
+const SCENE04b_FRAMES = Math.ceil(4.5 * FPS);
+const SCENE04c_FRAMES = Math.ceil(2 * FPS);
 const SCENE04d_FRAMES = Math.ceil(4 * FPS);
-const SCENE05_FRAMES = 5 * FPS;
-const SCENE05b_FRAMES = 6 * FPS;
-const SCENE06_FRAMES = 3 * FPS;
+const SCENE05_FRAMES = Math.ceil(5 * FPS);
+const SCENE05b_FRAMES = Math.ceil(6.5 * FPS);
+const SCENE06_FRAMES = Math.ceil(3 * FPS);
 
-// Transition durations (in frames)
-const T8 = linearTiming({ durationInFrames: 8 });
+// Transition durations (in frames) – snappier
+const T6 = linearTiming({ durationInFrames: 6 });
+const T10 = linearTiming({ durationInFrames: 10 });
+const T12 = linearTiming({ durationInFrames: 12 });
 const T15 = linearTiming({ durationInFrames: 15 });
-const T18 = linearTiming({ durationInFrames: 18 });
-const T23 = linearTiming({ durationInFrames: 23 }); // replaces spring for 03a→03b and 04c→04d
 
 // Total = sum(sequences) - sum(transition overlaps)
-const TRANSITION_OVERLAP_TOTAL = 15 * 8 + 8 + 18 * 2 + 23 * 2;
+const TRANSITION_OVERLAP_TOTAL = 7 * 10 + 6 + 2 * 12 + 2 * 15;
 const INSTANTCLAW_LAUNCH_REEL_FRAMES =
   SCENE01a_FRAMES +
   SCENE01b_FRAMES +
@@ -68,55 +69,55 @@ export const InstantClawLaunchReel = () => {
         <TransitionSeries.Sequence durationInFrames={SCENE01a_FRAMES}>
           <Scene01aText />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={T15} />
+        <TransitionSeries.Transition presentation={fade()} timing={T10} />
         <TransitionSeries.Sequence durationInFrames={SCENE01b_FRAMES}>
           <Scene01bTerminalFullscreen />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={slide({ direction: 'from-right' })} timing={T15} />
+        <TransitionSeries.Transition presentation={slide({ direction: 'from-right' })} timing={T10} />
         <TransitionSeries.Sequence durationInFrames={SCENE02a_FRAMES}>
           <Scene02aText />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={T15} />
+        <TransitionSeries.Transition presentation={fade()} timing={T10} />
         <TransitionSeries.Sequence durationInFrames={SCENE02b_FRAMES}>
           <Scene02bDeployButton />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={T15} />
+        <TransitionSeries.Transition presentation={fade()} timing={T10} />
         <TransitionSeries.Sequence durationInFrames={SCENE03a_FRAMES}>
           <Scene03aText />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={wipe({ direction: 'from-top-left' })} timing={T23} />
+        <TransitionSeries.Transition presentation={wipe({ direction: 'from-top-left' })} timing={T15} />
         <TransitionSeries.Sequence durationInFrames={SCENE03b_FRAMES}>
           <Scene03bBento />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={wipe({ direction: 'from-left' })} timing={T18} />
+        <TransitionSeries.Transition presentation={wipe({ direction: 'from-left' })} timing={T12} />
         <TransitionSeries.Sequence durationInFrames={SCENE03c_FRAMES}>
           <Scene03cOrbiting />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={iris({ width: 1080, height: 1920 })} timing={T15} />
+        <TransitionSeries.Transition presentation={iris({ width: 1080, height: 1920 })} timing={T10} />
         <TransitionSeries.Sequence durationInFrames={SCENE04a_FRAMES}>
           <Scene04aProblemText />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={wipe({ direction: 'from-top' })} timing={T15} />
+        <TransitionSeries.Transition presentation={wipe({ direction: 'from-top' })} timing={T10} />
         <TransitionSeries.Sequence durationInFrames={SCENE04b_FRAMES}>
           <Scene04bTextStack />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={T8} />
+        <TransitionSeries.Transition presentation={fade()} timing={T6} />
         <TransitionSeries.Sequence durationInFrames={SCENE04c_FRAMES}>
           <Scene04cSolutionText />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={slide({ direction: 'from-right' })} timing={T23} />
+        <TransitionSeries.Transition presentation={slide({ direction: 'from-right' })} timing={T15} />
         <TransitionSeries.Sequence durationInFrames={SCENE04d_FRAMES}>
           <Scene04dVideoInMac />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={T15} />
+        <TransitionSeries.Transition presentation={fade()} timing={T10} />
         <TransitionSeries.Sequence durationInFrames={SCENE05_FRAMES}>
           <Scene05Timer />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={T15} />
+        <TransitionSeries.Transition presentation={fade()} timing={T10} />
         <TransitionSeries.Sequence durationInFrames={SCENE05b_FRAMES}>
           <Scene05bTelegram />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={T18} />
+        <TransitionSeries.Transition presentation={fade()} timing={T12} />
         <TransitionSeries.Sequence durationInFrames={SCENE06_FRAMES}>
           <Scene06CTA />
         </TransitionSeries.Sequence>
