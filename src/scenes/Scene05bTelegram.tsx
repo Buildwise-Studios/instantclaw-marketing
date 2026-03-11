@@ -2,7 +2,6 @@ import React from 'react';
 import {
   AbsoluteFill,
   useCurrentFrame,
-  useVideoConfig,
   interpolate,
   Img,
   staticFile,
@@ -18,15 +17,6 @@ So... what should I call you? And what would you like to call me? I could be an 
 
 export const Scene05bTelegram = () => {
   const frame = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
-
-  // 3D tilt: phone starts slightly rotated away, eases to facing viewer
-  const tiltDeg = interpolate(
-    frame,
-    [0, durationInFrames * 0.5],
-    [-18, 8],
-    { easing: Easing.out(Easing.cubic), extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
-  );
 
   // Phone entrance: scale up and fade in
   const entranceProgress = interpolate(
@@ -66,7 +56,7 @@ export const Scene05bTelegram = () => {
           justifyContent: 'center',
         }}
       >
-        <IPhoneFrame tiltDeg={tiltDeg} transformOrigin="center center">
+        <IPhoneFrame>
           <div
             style={{
               height: '100%',

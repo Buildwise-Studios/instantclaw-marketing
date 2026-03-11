@@ -12,7 +12,7 @@ const destinations = [
 
 function DestinationCard({ city, dates }: { city: string; dates: string }) {
   return (
-    <div className="flex shrink-0 flex-col gap-1 rounded-xl border border-blue-200/60 bg-blue-50/80 p-3 w-24">
+    <div className="flex shrink-0 flex-col gap-1 rounded-xl border border-amber-200/60 bg-amber-50/80 p-3 w-24">
       <MapPin className="h-4 w-4 text-[#D4A574]" />
       <span className="font-medium text-neutral-800">{city}</span>
       <span className="text-[10px] text-neutral-500">{dates}</span>

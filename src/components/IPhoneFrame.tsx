@@ -50,7 +50,7 @@ export const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
           transformStyle: 'preserve-3d',
           backfaceVisibility: 'hidden',
           WebkitBackfaceVisibility: 'hidden',
-          boxShadow: `0 ${24 + Math.abs(tiltDeg) * 2}px ${48 + Math.abs(tiltDeg) * 3}px rgba(0,0,0,${0.2 + Math.abs(tiltDeg) * 0.003})`,
+          boxShadow: `0 ${24 + Math.abs(tiltDeg) * 2}px ${48 + Math.abs(tiltDeg) * 3}px rgba(0,0,0,${0.2 + Math.abs(tiltDeg) * 0.003}), 0 0 100px 24px rgba(212,165,116,0.25)`,
           borderRadius: 135,
         }}
       >

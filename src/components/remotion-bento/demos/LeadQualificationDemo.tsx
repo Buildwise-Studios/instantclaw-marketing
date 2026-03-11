@@ -55,25 +55,25 @@ export function LeadQualificationDemo({ className }: { className?: string }) {
         }}
       >
         <Circle
-          className="border-[#D4A574]/40 bg-amber-50"
+          className="border-[#D4A574]/50 bg-amber-50 text-[#1D1C1D]"
           style={{ position: 'absolute', left: leadX - CIRCLE_SIZE / 2, top: circleTop }}
         >
           Lead
         </Circle>
         <Circle
-          className="border-neutral-200"
+          className="border-[#D4A574]/30 bg-amber-50/80 text-[#1D1C1D]"
           style={{ position: 'absolute', left: enrichX - CIRCLE_SIZE / 2, top: circleTop }}
         >
           Enrich
         </Circle>
         <Circle
-          className="border-neutral-200"
+          className="border-[#D4A574]/30 bg-amber-50/80 text-[#1D1C1D]"
           style={{ position: 'absolute', left: scoreX - CIRCLE_SIZE / 2, top: circleTop }}
         >
           Score
         </Circle>
         <Circle
-          className="border-neutral-200"
+          className="border-[#D4A574]/30 bg-amber-50/80 text-[#1D1C1D]"
           style={{ position: 'absolute', left: crmX - CIRCLE_SIZE / 2, top: circleTop }}
         >
           CRM

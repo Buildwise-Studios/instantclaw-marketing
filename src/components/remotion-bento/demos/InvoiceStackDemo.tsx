@@ -14,7 +14,7 @@ export function InvoiceStackDemo({ className }: { className?: string }) {
       {invoices.map((inv, i) => (
         <div
           key={i}
-          className="absolute left-4 right-4 rounded-lg border bg-white p-2 shadow-sm"
+          className="absolute left-4 right-4 rounded-lg border border-amber-200/50 bg-amber-50/60 p-2 shadow-sm"
           style={{
             top: 12 + i * 36,
             transform: `rotate(${(i - 1) * 4}deg)`,

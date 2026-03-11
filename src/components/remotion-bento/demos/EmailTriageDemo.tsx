@@ -31,7 +31,7 @@ function EmailItem({
   important: boolean;
 }) {
   return (
-    <div className="flex items-center gap-2 rounded-lg border bg-white px-3 py-2 shadow-sm">
+    <div className="flex items-center gap-2 rounded-lg border border-amber-200/50 bg-amber-50/60 px-3 py-2 shadow-sm">
       {important && (
         <Star className="h-4 w-4 shrink-0 text-[#D4A574]" fill="#D4A574" />
       )}
